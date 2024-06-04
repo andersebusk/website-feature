@@ -17,6 +17,9 @@ const config: Config = {
           500: '#0070F3',
           600: '#2F6FEB',
         },
+        customColor: 'rgb(38, 96, 147)',
+        customColor2: 'rgb(92, 140, 183)',
+        customColor3: 'rgb(163, 201, 97)',
       },
     },
     keyframes: {
