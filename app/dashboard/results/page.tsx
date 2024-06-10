@@ -4,12 +4,8 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
 import { useRouter } from 'next/navigation';
 import { lusitana } from '@/app/ui/fonts';
-import axios from 'axios';
-import { jsPDF } from "jspdf";
-import html2canvas from 'html2canvas';
-import generatePDF from '@/app/generatepdf';
 import domtoimage from 'dom-to-image';
-import PdfContent from './pdfcontent';
+
 
 
 
@@ -91,11 +87,11 @@ const Page = () => {
     country = 'N/A'
   } = loginData as any;
 
-  //const {
-    //USD = 'N/A',
-    //Liters = 'N/A',
-    //CO2_Tons = 'N/A'
-  //} = savingsData as any;
+  const {
+    USD = 'N/A',
+    Liters = 'N/A',
+    CO2_Tons = 'N/A'
+  } = savingsData as any;
 
   const handleDownloadImage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -266,52 +262,186 @@ const Page = () => {
           font-weight:bold;
         }
     </style>
-</head> 
+</head>
 <body>
-`;
-
-const generatePNG = async (htmlTemplate:string, PdfContent: HTMLElement) => {
-  // Get HTML content from PdfContent element
-  const pdfContentHTML = PdfContent?.innerHTML ?? '';
-  // Concatenate PDF content HTML with HTML template
-  const fullHTML = htmlTemplate + pdfContentHTML + '</body></html>';
+<header>
+    <div class="headerSection">
+      <div class="logoAndName">
+        <svg>
+          <circle cx="50%" cy="50%" r="40%" stroke="black" stroke-width="3" fill="black" />
+        </svg>
+        <h1>Marine Fluid Technology</h1>
+      </div>
+      <div>
+        <h2>Savings overview</h2>
+        <p>
+          <b>Date Issued</b> 
+          <script>
+            document.write(new Date().toLocaleDateString());
+          </script>
+        </p>
+      </div>
+    </div>
+    <hr />
+    <div class="headerSection">
+      <div id= userinfo class="issuedTo">
+        <h3>Issued to</h3>
+        <p>
+          <span id="companyOutput"></span> <br/>
+          <span id="mailOutput"></span> <br/>
+          <span id="phoneOutput"></span> <br/>
+          <span id="countryOutput"></span>
+        </p>
+      </div>
+      <div>
+        <p>
+          <b>Notes</b>
+          <br />
+          Please contact us, if you have any questions regarding the savings overview.
+        </p>
+      </div>
+    </div>
+  </header>
   
-  // Create a new div element
-  const temporaryDiv = document.createElement('div');
-  // Set its inner HTML to the combined HTML string
-  temporaryDiv.innerHTML = fullHTML;
-  // Log the content to check if it's correct
-  console.log('Temporary div content:', temporaryDiv.innerHTML);
+  <footer>
+      <a href="https://marinefluid.dk/">https://marinefluid.dk/</a>
+      <span>+45 2476 9512</span>
+      <span>Strandvejen 60, 2900 Hellerup, Denmark</span>
+  </footer>
   
-  // Append the temporary div to the body
-  document.body.appendChild(temporaryDiv);
-  // Calculate the scale factor
-  const scaleFactor = Math.min(1, window.innerWidth / temporaryDiv.offsetWidth, window.innerHeight / temporaryDiv.offsetHeight);
-  // Apply a CSS transform to the temporary div to scale it down
-  temporaryDiv.style.transform = `scale(${scaleFactor})`;
-  temporaryDiv.style.transformOrigin = 'top left';
-  // Use dom-to-image to take a screenshot of the div
-  domtoimage.toBlob(temporaryDiv)
-    .then((blob) => {
-      console.log('Blob:', blob);
-      if (blob) {
-        // Create a new URL for the blob and open it in a new window
-        const url = URL.createObjectURL(blob);
-        window.open(url, '_blank');
-      } else {
-        console.error('Error: Blob is empty or malformed.');
-      }
-      // Remove the temporary div from the body
-      document.body.removeChild(temporaryDiv);
-    })
-    .catch((error) => {
-      console.error('Error converting DOM to image:', error);
-    });
-};
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Item Description</th>
+          <th>Rate</th>
+          <th></th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <b>Savings in USD due to installing the BOB</b>
+            <br />
+            Total in USD 
+          </td>
+          <td>
+            <span id="usdOutput"></span>
+          </td>
+          <td>
+            <span id="usdOutput"></span>
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>Tonnes of CO2 saved:</b>
+              <br />
+              Tonnes of CO2
+            </td>
+            <td>
+              
+            </td>
+            <td>
+              <span id="co2OutPut"></span>
+            </td>
+            <td>
+              <span id="co2OutPut"></span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>Litres of oil saved:</b>
+              <br />
+              Litres of oil
+            </td>
+            <td>
+              
+            </td>
+            <td>
+              <span id="litersOutput"></span>
+            </td>
+            <td>
+              <span id="litersOutput"></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="summary">
+        <tr>
+          <th>
+            
+          </th>
+          <td>
+            
+          </td>
+        </tr>
+        <tr>
+          <th>
+           
+          </th>
+          <td>
+           
+          </td>
+        </tr>
+        <tr class="total">
+          <th>
+            Total USD: <br />
+            Total CO2: <br />
+            Total Litres:
+          </th>
+          <td>
+            <span id="totalUsdOutput"></span> <br />
+            <span id="totalCo2Output"></span> <br />
+            <span id="totalLitersOutput"></span>
+          </td>
+        </tr>
+      </table>
+    </main>
+    <aside>
+      <hr />
+      <b>Terms &amp; Conditions</b>
+      <p>
+        
+      </p>
+    </aside>
+  </body>
+  </html>  
+    `;
+
+    const generatePNG = async (htmlTemplate: any) => {
+      // Create a new div element
+      const temporaryDiv = document.createElement('div');
+      // Set its inner HTML to the provided string
+      temporaryDiv.innerHTML = htmlTemplate;
+      // Append the temporary div to the body
+      document.body.appendChild(temporaryDiv);
+      // Calculate the scale factor
+      const scaleFactor = Math.min(1, window.innerWidth / temporaryDiv.offsetWidth, window.innerHeight / temporaryDiv.offsetHeight);
+      // Apply a CSS transform to the temporary div to scale it down
+      temporaryDiv.style.transform = `scale(${scaleFactor})`;
+      temporaryDiv.style.transformOrigin = 'top left';
+      // Use dom-to-image to take a screenshot of the div
+      domtoimage.toBlob(temporaryDiv)
+        .then((blob) => {
+          // Create a new URL for the blob and open it in a new window
+          const url = URL.createObjectURL(blob);
+          window.open(url, '_blank');
+          // Remove the temporary div from the body
+          document.body.removeChild(temporaryDiv);
+        })
+        .catch((error) => {
+          console.error('Error converting DOM to image:', error);
+        });
+    };
+    
+    generatePNG(htmlTemplate);
+  };
 
 
-generatePNG(htmlTemplate, PdfContent as HTMLElement);
-};
 
   return (
     <form className="space-y-3" onSubmit={handleDownloadImage} >
