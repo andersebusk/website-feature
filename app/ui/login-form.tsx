@@ -1,34 +1,71 @@
 'use client';
 import { lusitana } from '@/app/ui/fonts';
-import {
-  AtSymbolIcon,
-  KeyIcon,
-  ExclamationCircleIcon,
-  HomeIcon,
-  PhoneIcon,
-  MagnifyingGlassPlusIcon
-
-} from '@heroicons/react/24/outline';
+import {AtSymbolIcon, KeyIcon, ExclamationCircleIcon, HomeIcon, PhoneIcon, MagnifyingGlassPlusIcon} from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from './button';
 import 'react-phone-input-2/lib/style.css'
 import PhoneInput from 'react-phone-input-2'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 export default function LoginForm() {
+  
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+
+  const companyRef = React.useRef<HTMLInputElement>(null);
+  const mailRef = React.useRef<HTMLInputElement>(null);
+  const phoneRef = React.useRef<HTMLInputElement>(null);
+  const countryRef = React.useRef<HTMLInputElement>(null);
+
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => { 
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => { 
     e.preventDefault();
-    console.log('Login form submitted');
-    router.push('/dashboard');
-  }
+    if (
+      companyRef.current &&
+      mailRef.current &&
+      phoneRef.current &&
+      countryRef.current
+    ) {
+      const loginData = {
+        company: companyRef.current.value,
+        email: mailRef.current.value,
+        phone: phoneRef.current.value,
+        country: countryRef.current.value,
+      };
 
+      try {
+        await axios.post('http://localhost:5000/api/users/register', loginData);
+        console.log('Login form submitted');
+        sessionStorage.setItem('loginData', JSON.stringify(loginData));
+        console.log('Login data saved:', loginData);
+        router.push('/dashboard');
+      } catch (error) {
+        console.error('Error registering user:', error);
+      }
+    }
+  };
 
+   useEffect(() => {
+    const loginDataFromStorage = sessionStorage.getItem('loginData');
+    if (loginDataFromStorage && loginDataFromStorage !== '') {
+      try {
+        const savedLoginData = JSON.parse(loginDataFromStorage);
+        console.log('Saved login data:', savedLoginData);
+        if (savedLoginData) {
+        if (companyRef.current) companyRef.current.value = savedLoginData.company;
+          if (mailRef.current) mailRef.current.value = savedLoginData.email;
+          if (phoneRef.current) phoneRef.current.value = savedLoginData.phone;
+          if (countryRef.current) countryRef.current.value = savedLoginData.country;
+        }
+      } catch (error) {
+        console.error('Error parsing login data:', error);
+      }
+    }
+  }, []);
   return (
     <form className="space-y-3" onSubmit={handleLogin}>
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
@@ -53,6 +90,7 @@ export default function LoginForm() {
                 type="name"
                 name="Company"
                 placeholder="*Enter the name of your company"
+                ref={companyRef}
 
               />
               <HomeIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -72,6 +110,7 @@ export default function LoginForm() {
                 type="email"
                 name="email"
                 placeholder="*Enter company email"
+                ref={mailRef}
             
               />
               <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -91,6 +130,7 @@ export default function LoginForm() {
                 type="tel"
                 name="phone"
                 placeholder="*Enter your countrycode + phone number"
+                ref={phoneRef}
 
               />
               <PhoneIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -110,6 +150,7 @@ export default function LoginForm() {
                 type="name"
                 name="Country"
                 placeholder="*Enter the name of your country"
+                ref={countryRef}
 
               />
               <MagnifyingGlassPlusIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -202,13 +243,19 @@ export default function LoginForm() {
   );
 }
 
+interface Submission {
+  onClick?: () => void;
+}
 
-
-function LoginButton() {
+function LoginButton({ onClick }: Submission) {
 
   return (
-      <Button className="mt-4 w-full" type="submit">
+      <Button className="mt-4 w-full" type="submit" onClick={onClick}>
         Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
       </Button>
   );
 }
+function registerUser(loginData: { company: string; email: string; phone: string; country: string; }): any {
+  throw new Error('Function not implemented.');
+}
+

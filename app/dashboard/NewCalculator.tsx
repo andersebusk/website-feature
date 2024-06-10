@@ -1,18 +1,17 @@
 import { useState } from 'react';
 
 const useOilSavingsCalculation = () => {
-    const [savings, setSavings] = useState([0, 0, 0]);
+    const [savings, setSavings] = useState({USD: 0, Liters: 0, CO2_Tons: 0});
 
     function olie_besparelser(
         Requested_BN: number,
-        ME_system_oil_BN: number,
         Load: number,
         Price_ME: number,
         ME_power: number,
         Days_sailing: number,
         Feedrate_without: number,
         Price_oil_L: number
-    ): [number, number, number] {
+    ): number[] {
         const variabel: number = 99;
         const Used_Aux_engine_oil_BN: number = 20;
         const Used_Aux_engine_oil_density: number = 0.91;
@@ -23,6 +22,7 @@ const useOilSavingsCalculation = () => {
         const Price_high: number = 3.5;
         const Density_ME: number = 0.87;
         const Feedrate_BOB: number = 0.8;
+        const ME_system_oil_BN: number = 8;
 
         const Oil_ME_kg: number = (variabel * (Requested_BN - High_BN_oil)) / (ME_system_oil_BN + ((Aux_oil_replace * Used_Aux_engine_oil_BN - Aux_oil_replace * High_BN_oil) / (1 - Aux_oil_replace)) - High_BN_oil);
         const Oil_ME_L: number = Oil_ME_kg / Density_ME;
@@ -49,10 +49,13 @@ const useOilSavingsCalculation = () => {
 
         const SUM_without: number = annual_consumption_ltr_without * Price_oil_L;
         const SUM_BOB: number = annual_consumption_ltr_BOB * Price_oil_L_BOB;
-
+    
         const Savings_USD: number = SUM_without - SUM_BOB;
         const Savings_L: number = annual_consumption_ltr_without - annual_consumption_ltr_BOB;
         const Savings_CO2_ton: number = (3 / 1000) * Savings_L;
+
+        
+        setSavings({USD: Savings_USD, Liters: Savings_L, CO2_Tons: Savings_CO2_ton});
 
         return [Savings_USD, Savings_L, Savings_CO2_ton];
     }

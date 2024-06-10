@@ -14,12 +14,9 @@ export default function SubmissionFormAdd() {
   const fuelOilConsumptionRef = useRef<HTMLInputElement>(null);
   const router = useRouter(); 
 
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('purifierOilConsumptionRef:', purifierOilConsumptionRef.current);
-    console.log('dischargedOilRef:', dischargedOilRef.current);
-    console.log('dischargeIntervalRef:', dischargeIntervalRef.current);
-    console.log('fuelOilConsumptionRef:', fuelOilConsumptionRef.current);
 
     if (
       purifierOilConsumptionRef.current &&
@@ -27,12 +24,16 @@ export default function SubmissionFormAdd() {
       dischargeIntervalRef.current &&
       fuelOilConsumptionRef.current
     ) {
+
+
       const formDataAdd = {
         purifier_oil: purifierOilConsumptionRef.current.value,
         discharged_oil: dischargedOilRef.current.value,
         discharge_interval: dischargeIntervalRef.current.value,
         fuel_oil_consumption: fuelOilConsumptionRef.current.value
       };
+      
+    
       console.log('Form data to be saved:', formDataAdd); // Log the data before saving
       sessionStorage.setItem('formDataAdd', JSON.stringify(formDataAdd));
       console.log('Form data saved to session storage:', formDataAdd);
@@ -171,8 +172,8 @@ interface Submission {
 
 function SubmitButton({ onClick }: Submission) {
   return (
-    <Button className="mt-4 w-1/7" type="submit" onClick={onClick}>
-      Submit <ArrowRightIcon className="ml-auto h-4 w-4 text-gray-50" />
+    <Button className="mt-4 w-1/6" type="submit" onClick={onClick}>
+      Next <ArrowRightIcon className="ml-auto h-4 w-4 text-gray-50" />
     </Button>
   );
 }

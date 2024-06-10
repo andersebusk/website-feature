@@ -35,13 +35,12 @@ const Page = () => {
     if (savedFormData && savedFormDataAdd) {
       const [Savings_USD, Savings_L, Savings_CO2_ton] = olie_besparelser(
         savedFormData.BN_value,
-        savedFormData.ME_oil,
-        savedFormDataAdd.oil_load,
+        savedFormData.oil_load,
         savedFormData.ME_oil_price,
         savedFormData.ME_power,
-        savedFormDataAdd.annual_days_sailing,
-        savedFormDataAdd.feedrate,
-        savedFormDataAdd.oil_price
+        savedFormData.annual_days_sailing,
+        savedFormData.feedrate,
+        savedFormData.oil_price
       );
       setSavings([Savings_USD, Savings_L, Savings_CO2_ton]);
       setIsLoading(false);

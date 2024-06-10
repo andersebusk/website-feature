@@ -29,16 +29,6 @@ export default function SubmissionForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('vesselNameRef:', vesselNameRef.current);
-    console.log('ME_powerRef:', ME_powerRef.current);
-    console.log('BN_valueRef:', BN_valueRef.current);
-    console.log('ME_oil_priceRef:', ME_oil_priceRef.current);
-    console.log('commercial_oil_priceRef:', commercial_oil_priceRef.current);
-    console.log('oilLoadRef:', oilLoadRef.current);
-    console.log('annualDaysSailingRef:', annualDaysSailingRef.current);
-    console.log('fuelOilSulfurRef:', fuelOilSulfurRef.current);
-    console.log('feedrateRef:', feedrateRef.current);
-    console.log('MainEngineTypeRef:', MainEngineTypeRef.current);
   
     if (
       vesselNameRef.current &&
@@ -323,7 +313,7 @@ interface Submission {
 
 function SubmitButton({ onClick }: Submission) {
   return (
-    <Button className="mt-4 w-1/7" type="submit" onClick={onClick}>
+    <Button className="mt-4 w-1/6" type="submit" onClick={onClick}>
       Next <ArrowRightIcon className="ml-auto h-4 w-4 text-gray-50" />
     </Button>
   );
