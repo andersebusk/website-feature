@@ -87,11 +87,11 @@ const Page = () => {
     country = 'N/A'
   } = loginData as any;
 
-  const {
-    USD = 'N/A',
-    Liters = 'N/A',
-    CO2_Tons = 'N/A'
-  } = savingsData as any;
+  //const {
+    //USD = 'N/A',
+    //Liters = 'N/A',
+    //CO2_Tons = 'N/A'
+  //} = savingsData as any;
 
   const handleDownloadImage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
