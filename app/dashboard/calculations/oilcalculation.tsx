@@ -1,9 +1,9 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import UseOilSavingsCalculation from '../NewCalculator';
+import useOilSavingsCalculation from '../NewCalculator';
 
 const Calculation = () => {
-    const { olie_besparelser, savings } = UseOilSavingsCalculation();
+    const { olie_besparelser, savings } = useOilSavingsCalculation();
     const previousSavingsRef = useRef(savings);
 
     // Parse the form data safely with a fallback
@@ -14,18 +14,22 @@ const Calculation = () => {
         if (savedFormData.BN_value && savedFormData.oil_load && savedFormData.ME_oil_price && 
             savedFormData.ME_power && savedFormData.annual_days_sailing && 
             savedFormData.feedrate && savedFormData.commercial_oil_price) {
-            
-            olie_besparelser(
-                savedFormData.BN_value,
-                savedFormData.oil_load,
-                savedFormData.ME_oil_price,
-                savedFormData.ME_power,
-                savedFormData.annual_days_sailing,
-                savedFormData.feedrate,
-                savedFormData.commercial_oil_price
-            );
-        }
+            }
     }, []);
+
+    useEffect(() => {
+        if (Object.keys(savedFormData).length > 0) {
+        olie_besparelser(
+            savedFormData.BN_value,
+            savedFormData.oil_load,
+            savedFormData.ME_oil_price,
+            savedFormData.ME_power,
+            savedFormData.annual_days_sailing,
+            savedFormData.feedrate,
+            savedFormData.commercial_oil_price
+        );
+    }
+}, []);
 
     useEffect(() => {
         if (JSON.stringify(previousSavingsRef.current) !== JSON.stringify(savings)) {

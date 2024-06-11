@@ -5,10 +5,8 @@ import { CalendarIcon, ChartBarIcon, BeakerIcon, ArrowRightIcon, UserIcon } from
 import { Button } from '../../ui/button'; // Adjust the import according to your project's structure
 import { useRouter } from 'next/navigation';
 import { lusitana } from '@/app/ui/fonts';
-import Calculation from '../calculator/oilcalculation';
 
 export default function SubmissionFormAdd() {
-  
   const purifierOilConsumptionRef = useRef<HTMLInputElement>(null);
   const dischargedOilRef = useRef<HTMLInputElement>(null);
   const dischargeIntervalRef = useRef<HTMLInputElement>(null);
@@ -39,6 +37,8 @@ export default function SubmissionFormAdd() {
       console.log('Form data to be saved:', formDataAdd); // Log the data before saving
       sessionStorage.setItem('formDataAdd', JSON.stringify(formDataAdd));
       console.log('Form data saved to session storage:', formDataAdd);
+      
+
       router.push('/dashboard/results');
     }
   };

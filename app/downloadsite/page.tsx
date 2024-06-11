@@ -55,6 +55,15 @@ const App: React.FC = () => {
     CO2_Tons = 'N/A'
   } = savingsData as any;
 
+const companyValue = company !== undefined ? company : 'N/A';
+const emailValue = email !== undefined ? email : 'N/A';
+const phoneValue = phone !== undefined ? phone : 'N/A';
+const countryValue = country !== undefined ? country : 'N/A';
+
+const USDValue = USD !== undefined ? USD : 'N/A';
+const LitersValue = Liters !== undefined ? Liters : 'N/A';
+const CO2_TonsValue = CO2_Tons !== undefined ? CO2_Tons : 'N/A';
+
   console.log('loginData:', loginData);
   console.log('savingsData:', savingsData);
 
@@ -144,6 +153,7 @@ const App: React.FC = () => {
           </tbody>
         </table>
         <table className={styles.summary}>
+          <tbody></tbody>
           <tr className={styles.total}>
             <th>
               Total USD: <br />

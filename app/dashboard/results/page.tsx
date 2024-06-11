@@ -5,6 +5,7 @@ import { Button } from '@/app/ui/button';
 import { useRouter } from 'next/navigation';
 import { lusitana } from '@/app/ui/fonts';
 import domtoimage from 'dom-to-image';
+import useOilSavingsCalculation from '../NewCalculator';
 
 
 
@@ -15,8 +16,39 @@ const Page = () => {
   const [formDataAdd, setFormDataAdd] = useState(null);
   const [loginData, setLoginData] = useState(null);
   const [savingsData, setSavingsData] = useState(null);
- 
-  
+  const { olie_besparelser, savings } = useOilSavingsCalculation();
+  const previousSavingsRef = useRef(savings);
+
+  // Parse the form data safely with a fallback
+  const savedFormData = sessionStorage.getItem('formData') ? JSON.parse(sessionStorage.getItem('formData') || '{}') : {};
+
+  useEffect(() => {
+      // Ensure that all necessary fields are available before calling olie_besparelser
+      if (savedFormData.BN_value && savedFormData.oil_load && savedFormData.ME_oil_price && 
+          savedFormData.ME_power && savedFormData.annual_days_sailing && 
+          savedFormData.feedrate && savedFormData.commercial_oil_price) {
+          
+      olie_besparelser(
+          savedFormData.BN_value,
+          savedFormData.oil_load,
+          savedFormData.ME_oil_price,
+          savedFormData.ME_power,
+          savedFormData.annual_days_sailing,
+          savedFormData.feedrate,
+          savedFormData.commercial_oil_price
+      );
+  }
+}, []);
+
+  useEffect(() => {
+      if (JSON.stringify(previousSavingsRef.current) !== JSON.stringify(savings)) {
+          sessionStorage.setItem('savingsData', JSON.stringify(savings));
+          console.log('Savings data saved to sessionStorage:', savings);
+          previousSavingsRef.current = savings;
+      }
+  }, [savings]);
+
+  console.log('savedSavingsData:', savings);
   
 
   useEffect(() => {
@@ -87,11 +119,11 @@ const Page = () => {
     country = 'N/A'
   } = loginData as any;
 
-  //const {
-    //USD = 'N/A',
-    //Liters = 'N/A',
-    //CO2_Tons = 'N/A'
-  //} = savingsData as any;
+  const {
+    USD = 'N/A',
+    Liters = 'N/A',
+    CO2_Tons = 'N/A'
+  } = savingsData as any;
 
   const handleDownloadImage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -150,7 +182,7 @@ interface Submission {
 
 function GenerateSavings({ onClick }: Submission) {
   return (
-    <Button className="mt-5 w-full" type="submit" onClick={onClick}>
+    <Button className="mt-5 w-1/7" type="submit" onClick={onClick}>
       Generate savings <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
     </Button>
   );
