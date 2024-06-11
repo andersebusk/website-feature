@@ -8,8 +8,6 @@ import domtoimage from 'dom-to-image';
 import useOilSavingsCalculation from '../NewCalculator';
 
 
-
-
 const Page = () => {
   const router = useRouter();
   const [formData, setFormData] = useState(null);
