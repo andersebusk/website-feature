@@ -534,38 +534,7 @@ footer a:first-child{
     <hr />
     <b>Terms &amp; Conditions</b>
     <p>
-      
     </p>
   </aside>
-  
-  <button onclick="convertHtmlToImage()">Konverter til PNG og download</button>
-
-  <script>
-  function convertHtmlToImage() {
-      // Hent HTML-elementet, der skal konverteres til billede
-      const element = document.getElementById('content');
-  
-      // Konverter HTML til billede ved hjælp af html2canvas
-      html2canvas(element)
-      .then(canvas => {
-          // Konverter canvas til data-URL
-          const imageData = canvas.toDataURL('image/png');
-  
-          // Opret en skjult a-tag for at downloade billedet
-          const a = document.createElement('a');
-          a.href = imageData;
-          a.download = 'layout_image.png';
-          a.style.display = 'none';
-  
-          // Tilføj a-tag til DOM og simuler klik for at starte download
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-      })
-      .catch(error => {
-          console.error('Fejl ved konvertering af HTML til billede:', error);
-      });
-  }
-  </script>
 </body>
 </html>

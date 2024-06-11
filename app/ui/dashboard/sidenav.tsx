@@ -13,7 +13,7 @@ export default function SideNav() {
   const handleSignOut = () => {
     console.log('Signing out');
     sessionStorage.clear(); // clear session storage
-    router.push('/');
+    router.push('/login');
   }
 
   return (

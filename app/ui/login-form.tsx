@@ -42,10 +42,10 @@ export default function LoginForm() {
         console.log('Login form submitted');
         sessionStorage.setItem('loginData', JSON.stringify(loginData));
         console.log('Login data saved:', loginData);
-        router.push('/dashboard');
       } catch (error) {
         console.error('Error registering user:', error);
       }
+      router.push('/dashboard');
     }
   };
 

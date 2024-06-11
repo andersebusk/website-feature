@@ -149,7 +149,7 @@ export default function SubmissionForm() {
                   placeholder="*Power output of your main engine"
                   required
                 />
-                <span style={{ right: '1200px', top: '16px' }} className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900">kW/h</span>
+                <span style={{ right: '0', top: '16px' }} className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900">kW/h</span>
                 <CogIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
             </div>
