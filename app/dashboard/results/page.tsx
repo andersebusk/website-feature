@@ -38,14 +38,6 @@ const Page = () => {
   }
 }, []);
 
-  useEffect(() => {
-      if (JSON.stringify(previousSavingsRef.current) !== JSON.stringify(savings)) {
-          sessionStorage.setItem('savingsData', JSON.stringify(savings));
-          console.log('Savings data saved to sessionStorage:', savings);
-          previousSavingsRef.current = savings;
-      }
-  }, [savings]);
-
   console.log('savedSavingsData:', savings);
   
 
@@ -54,7 +46,6 @@ const Page = () => {
       const savedFormData = JSON.parse(sessionStorage.getItem('formData') || '{}');
       const savedFormDataAdd = JSON.parse(sessionStorage.getItem('formDataAdd') || '{}');
       const savedLoginData = JSON.parse(sessionStorage.getItem('loginData') || '{}');
-      const savedSavingsData = JSON.parse(sessionStorage.getItem('savingsData') || '{}');
 
       if (Object.keys(savedFormData).length > 0) {
         setFormData(savedFormData);
@@ -71,12 +62,6 @@ const Page = () => {
         setLoginData(savedLoginData);
       } else {
         console.warn('No login data found in session storage');
-      }
-
-      if (Object.keys(savedSavingsData).length > 0) {
-        setSavingsData(savedSavingsData);
-      } else {
-        console.warn('No savings data found in session storage');
       }
       
 
@@ -117,14 +102,15 @@ const Page = () => {
     country = 'N/A'
   } = loginData as any;
 
-  const {
-    USD = 'N/A',
-    Liters = 'N/A',
-    CO2_Tons = 'N/A'
-  } = savingsData as any;
 
   const handleDownloadImage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (JSON.stringify(previousSavingsRef.current) !== JSON.stringify(savings)) {
+      sessionStorage.setItem('savingsData', JSON.stringify(savings));
+      console.log('Savings data saved to sessionStorage:', savings);
+      previousSavingsRef.current = savings;
+    }
+    console.log('savedSavingsData:', savings);
     router.push('/downloadsite');
   };
 
