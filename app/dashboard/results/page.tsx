@@ -4,7 +4,6 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
 import { useRouter } from 'next/navigation';
 import { lusitana } from '@/app/ui/fonts';
-import domtoimage from 'dom-to-image';
 import useOilSavingsCalculation from '../NewCalculator';
 
 
@@ -13,32 +12,8 @@ const Page = () => {
   const [formData, setFormData] = useState(null);
   const [formDataAdd, setFormDataAdd] = useState(null);
   const [loginData, setLoginData] = useState(null);
-  const [savingsData, setSavingsData] = useState(null);
   const { olie_besparelser, savings } = useOilSavingsCalculation();
   const previousSavingsRef = useRef(savings);
-
-  // Parse the form data safely with a fallback
-  const savedFormData = sessionStorage.getItem('formData') ? JSON.parse(sessionStorage.getItem('formData') || '{}') : {};
-
-  useEffect(() => {
-      // Ensure that all necessary fields are available before calling olie_besparelser
-      if (savedFormData.BN_value && savedFormData.oil_load && savedFormData.ME_oil_price && 
-          savedFormData.ME_power && savedFormData.annual_days_sailing && 
-          savedFormData.feedrate && savedFormData.commercial_oil_price) {
-          
-      olie_besparelser(
-          savedFormData.BN_value,
-          savedFormData.oil_load,
-          savedFormData.ME_oil_price,
-          savedFormData.ME_power,
-          savedFormData.annual_days_sailing,
-          savedFormData.feedrate,
-          savedFormData.commercial_oil_price
-      );
-  }
-}, []);
-
-  console.log('savedSavingsData:', savings);
   
 
   useEffect(() => {
@@ -64,6 +39,15 @@ const Page = () => {
         console.warn('No login data found in session storage');
       }
       
+        olie_besparelser(
+            savedFormData.BN_value,
+            savedFormData.oil_load,
+            savedFormData.ME_oil_price,
+            savedFormData.ME_power,
+            savedFormData.annual_days_sailing,
+            savedFormData.feedrate,
+            savedFormData.commercial_oil_price
+        );
 
     } catch (error) {
       console.error('Error parsing form data from session storage', error);
@@ -73,6 +57,7 @@ const Page = () => {
   if (!formData) {
     return <div>Loading...</div>;
   }
+  
 
   const {
     vessel_name = 'N/A',
@@ -111,6 +96,7 @@ const Page = () => {
       previousSavingsRef.current = savings;
     }
     console.log('savedSavingsData:', savings);
+
     router.push('/downloadsite');
   };
 

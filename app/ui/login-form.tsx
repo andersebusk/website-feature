@@ -40,11 +40,11 @@ export default function LoginForm() {
       try {
         await axios.post('http://localhost:5000/api/users/register', loginData);
         console.log('Login form submitted');
-        sessionStorage.setItem('loginData', JSON.stringify(loginData));
-        console.log('Login data saved:', loginData);
       } catch (error) {
         console.error('Error registering user:', error);
       }
+      sessionStorage.setItem('loginData', JSON.stringify(loginData));
+      console.log('Login data saved:', loginData);
       router.push('/dashboard');
     }
   };
@@ -254,8 +254,5 @@ function LoginButton({ onClick }: Submission) {
         Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
       </Button>
   );
-}
-function registerUser(loginData: { company: string; email: string; phone: string; country: string; }): any {
-  throw new Error('Function not implemented.');
 }
 
