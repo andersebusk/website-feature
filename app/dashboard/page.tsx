@@ -137,7 +137,7 @@ export default function SubmissionForm() {
           <div className="mt-4">
             <div>
               <label className="mb-3 mt-5 block text-xs font-medium text-gray-900" htmlFor="ME_power">
-                Main engine power
+                Main engine power (kW/h)
               </label>
               <div className="relative">
                 <input
@@ -149,7 +149,7 @@ export default function SubmissionForm() {
                   placeholder="*Power output of your main engine"
                   required
                 />
-                <span style={{ right: '0', top: '16px' }} className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900">kW/h</span>
+                <span style={{ right: '0', top: '16px' }} className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
                 <CogIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
             </div>
@@ -224,7 +224,7 @@ export default function SubmissionForm() {
                 className="mb-3 mt-5 block text-xs font-medium text-gray-900"
                 htmlFor="feedrate"
               >
-                Feedrate
+                Feedrate (mm/min)
               </label>
               <div className="relative">
                 <input
@@ -237,7 +237,7 @@ export default function SubmissionForm() {
                   ref = {feedrateRef}
                   required
                 />
-                <span style={{ right: '1200px', top: '16px' }} className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900">mm/min</span>
+                <span style={{ right: '1200px', top: '16px' }} className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
                 <ChartBarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
             </div>
@@ -260,7 +260,7 @@ export default function SubmissionForm() {
             </div>
             <div className="mt-4">
               <label className="mb-3 mt-5 block text-xs font-medium text-gray-900" htmlFor="com_oil_price">
-                Commercial oil price
+                Commercial oil price (USD/L)
               </label>
               <div className="relative">
                 <input
@@ -272,13 +272,13 @@ export default function SubmissionForm() {
                   placeholder="*Price of your commercial cylinder oil"
                   required
                 />
-                <span style={{ right: '1174px', top: '16px' }} className="pointer-events-none absolute top-1/2 h/[18px] w/[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900">USD/L</span>
+                <span style={{ right: '1174px', top: '16px' }} className="pointer-events-none absolute top-1/2 h/[18px] w/[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
                 <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
             </div>
             <div className="mt-4">
               <label className="mb-3 mt-5 block text-xs font-medium text-gray-900" htmlFor="ME_oil_price">
-                Main engine system oil price
+                Main engine system oil price (USD/L)
               </label>
               <div className="relative">
                 <input
@@ -291,7 +291,7 @@ export default function SubmissionForm() {
                   placeholder="*Price of your main engine oil"
                   required
                 />
-                <span style={{ right: '1174px', top: '16px' }} className="pointer-events-none absolute top-1/2 h/[18px] w/[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900">USD/L</span>
+                <span style={{ right: '1174px', top: '16px' }} className="pointer-events-none absolute top-1/2 h/[18px] w/[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
                 <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
             </div>

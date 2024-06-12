@@ -75,7 +75,7 @@ export default function SubmissionFormAdd() {
             <label 
               className="mb-3 mt-5 block text-xs font-medium text-gray-900" 
               htmlFor="fuel_oil_consumption">
-              Fuil oil consumption per day
+              Fuil oil consumption per day (Litres)
             </label>
             <div className="relative">
               <input
@@ -97,7 +97,7 @@ export default function SubmissionFormAdd() {
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
               htmlFor="discharged_oil"
             >
-              Discharged oil
+              Discharged oil (Litres)
             </label>
             <div className="relative">
               <input
@@ -144,7 +144,7 @@ export default function SubmissionFormAdd() {
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
               htmlFor="purifier_oil_consumption"
             >
-              ME purifier oil consumption
+              ME purifier oil consumption (Litres)
             </label>
             <div className="relative">
               <input

@@ -82,8 +82,8 @@ const Page = () => {
     }
   }, []);
 
-  if (!formData) {
-    return <div>Loading...</div>;
+  if (!formData || !formDataAdd || !loginData) {
+    return <div>Please fill out the rest of the fields...</div>;
   }
   
 

@@ -89,6 +89,7 @@ export default function LoginForm() {
                 id="Company"
                 type="name"
                 name="Company"
+                required
                 placeholder="*Enter the name of your company"
                 ref={companyRef}
 
@@ -109,6 +110,7 @@ export default function LoginForm() {
                 id="email"
                 type="email"
                 name="email"
+                required
                 placeholder="*Enter company email"
                 ref={mailRef}
             
@@ -129,6 +131,7 @@ export default function LoginForm() {
                 id="phone"
                 type="tel"
                 name="phone"
+                required
                 placeholder="*Enter your countrycode + phone number"
                 ref={phoneRef}
 
@@ -149,6 +152,7 @@ export default function LoginForm() {
                 id="Country"
                 type="name"
                 name="Country"
+                required
                 placeholder="*Enter the name of your country"
                 ref={countryRef}
 

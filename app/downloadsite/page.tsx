@@ -3,6 +3,11 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import styles from '@/app/ui/savings.module.css'
 import Image from 'next/image';
+import { useRef } from 'react';
+import html2canvas from 'html2canvas';
+import { Button } from '@/app/ui/button';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
+
 <div className={styles.headerSection} />;
 <div className={styles.issuedTo} />;
 <div className={styles.summary} />;
@@ -13,11 +18,52 @@ import Image from 'next/image';
 
 
 const App: React.FC = () => {
+  const contentRef = useRef<HTMLElement | null>(null);
+
   const [loginData, setLoginData] = useState(null);
   const [savingsData, setSavingsData] = useState(null);
   const [savingsDataE, setSavingsDataE] = useState(null);
   const [savingsDataF, setSavingsDataF] = useState(null);
   const [savingsDataP, setSavingsDataP] = useState(null);
+  const [formData, setFormData] = useState(null);
+
+  const handleDownloadImage = () => {
+    const containerWidth = 230; // Width of A4 paper in mm
+    const containerHeight = 280; // Height of A4 paper in mm
+
+    // Convert mm to pixels (1mm = 3.779527559 pixels)
+    const pixelWidth = containerWidth * 3.779527559;
+    const pixelHeight = containerHeight * 3.779527559;
+
+    // Get the viewport dimensions
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    // Calculate the starting point for capture to center the content
+    const startX = (viewportWidth - pixelWidth) / 2;
+    const startY = (viewportHeight - pixelHeight) / 2 + 37.795276; // Shift down by 1 cm (approx. 1 cm = 37.795276 pixels)
+
+    // Capture the center portion of the page
+    html2canvas(document.body, {
+        x: startX,
+        y: startY,
+        width: pixelWidth,
+        height: pixelHeight
+    }).then(canvas => {
+        // Convert canvas to image data URL
+        const imageData = canvas.toDataURL('image/png');
+
+        // Create a temporary anchor element to download the image
+        const link = document.createElement('a');
+        link.href = imageData;
+        link.download = 'SavingsOverview.png'; // Filename for the downloaded image
+        link.click();
+    });
+};
+
+  useEffect(() => {
+    console.log(contentRef.current);
+  }, [contentRef]);
 
 
   useEffect(() => {
@@ -27,6 +73,7 @@ const App: React.FC = () => {
       const savedSavingsDataE = JSON.parse(sessionStorage.getItem('savingsDataE') || '{}');
       const savedSavingsDataF = JSON.parse(sessionStorage.getItem('savingsDataF') || '{}');
       const savedSavingsDataP = JSON.parse(sessionStorage.getItem('savingsDataP') || '{}');
+      const savedFormData = JSON.parse(sessionStorage.getItem('formData') || '{}');
 
 
       if (Object.keys(savedLoginData).length > 0) {
@@ -59,6 +106,12 @@ const App: React.FC = () => {
         console.warn('No savings data found in purifier session storage');
       }
 
+      if (Object.keys(savedFormData).length > 0) {
+        setFormData(savedFormData);
+      } else {
+        console.warn('No form data found in session storage');
+      }
+
       
 
     } catch (error) {
@@ -66,8 +119,8 @@ const App: React.FC = () => {
     }
   }, []);
 
-  if (!loginData) {
-    return <div>Loading...</div>;
+  if (!loginData || !savingsData || !savingsDataE || !savingsDataF || !savingsDataP || !formData) {
+    return <div>Please fill out the rest of the fields...</div>;
   }
 
   const {
@@ -101,6 +154,10 @@ const App: React.FC = () => {
     Liters_P = 'N/A',
     CO2_Tons_P = 'N/A'
   } = savingsDataP as any;
+
+  const {
+    vessel_name = 'N/A',
+  } = formData as any;
 
 
   console.log('loginData:', loginData);
@@ -164,7 +221,7 @@ const App: React.FC = () => {
         <table>
           <thead>
             <tr>
-              <th className={styles.spacing}>Savings Description:</th>
+              <th className={styles.spacing}>Savings for {vessel_name}:</th>
               <th className={styles.spacing}>USD rate</th>
               <th className={styles.spacing}>CO2 rate (T)</th>
               <th className={styles.spacing}>Oil rate (L)</th>
@@ -240,8 +297,24 @@ const App: React.FC = () => {
         </p>
       </aside>
     </div>
+    <DownloadPDF onClick={handleDownloadImage}/>
+          <div className="flex h-8 items-end space-x-1">
+            {/* Add form errors here */}
+      </div>
     </div>
   );
 };
+
+interface DownloadImageProps {
+  onClick?: () => void;
+}
+
+function DownloadPDF({ onClick }: DownloadImageProps) {
+  return (
+    <Button className="mt-4 w-1/6" type="button" onClick={onClick}>
+      Download <ArrowRightIcon className="ml-auto h-4 w-4 text-gray-50" />
+    </Button>
+  );
+}
 
 export default App;

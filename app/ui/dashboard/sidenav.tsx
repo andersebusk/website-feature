@@ -5,14 +5,17 @@ import AcmeLogo from '@/app/ui/acme-logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function SideNav() {
 
   const router = useRouter();
 
-  const handleSignOut = () => {
+  const handleSignOut = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
     console.log('Signing out');
     sessionStorage.clear(); // clear session storage
+    console.log('Session storage cleared');
     router.push('/login');
   }
 
