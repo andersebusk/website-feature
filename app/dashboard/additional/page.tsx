@@ -82,6 +82,7 @@ export default function SubmissionFormAdd() {
                 className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="fuel_oil_consumption"
                 type="number"
+                step="0.01"
                 name="fuel_oil_consumption"
                 ref={fuelOilConsumptionRef}
                 placeholder="*Enter your fuel oil consumption per day"
@@ -103,6 +104,7 @@ export default function SubmissionFormAdd() {
                 className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="discharged_oil"
                 type="number"
+                step="0.01"
                 name="discharged_oil"
                 placeholder="*Amount of discharged oil at every de-sludging (specific to your purifier)"
                 ref = {dischargedOilRef}
@@ -126,6 +128,7 @@ export default function SubmissionFormAdd() {
                 className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="discharge_interval"
                 type="number"
+                step="0.01"
                 name="discharge_interval"
                 placeholder="*Discharge interval from separator"
                 ref = {dischargeIntervalRef}
@@ -148,6 +151,7 @@ export default function SubmissionFormAdd() {
                 className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="purifier_oil_consumption"
                 type="number"
+                step="0.01"
                 name="purifier_oil_consumption"
                 placeholder="*Enter the aprroximate oil consumption via the purifier (due to desludding)"
                 ref = {purifierOilConsumptionRef}

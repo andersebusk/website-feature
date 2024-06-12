@@ -5,6 +5,10 @@ import { Button } from '@/app/ui/button';
 import { useRouter } from 'next/navigation';
 import { lusitana } from '@/app/ui/fonts';
 import useOilSavingsCalculation from '../NewCalculator';
+import useEnergySavingsCalculation from '../calculators/energycalc';
+import useFuelSavingsCalculation from '../calculators/fuelcalcl';
+import usePurifierSavingsCalculation from '../calculators/purifercalc';
+
 
 
 const Page = () => {
@@ -13,7 +17,13 @@ const Page = () => {
   const [formDataAdd, setFormDataAdd] = useState(null);
   const [loginData, setLoginData] = useState(null);
   const { olie_besparelser, savings } = useOilSavingsCalculation();
+  const { energy_besparelser, savingsE } = useEnergySavingsCalculation();
+  const { fuel_besparelser, savingsF } = useFuelSavingsCalculation();
+  const { purifier_besparelser, savingsP } = usePurifierSavingsCalculation();
   const previousSavingsRef = useRef(savings);
+  const previousSavingsE = useRef(savingsE);
+  const previousSavingsF = useRef(savingsF);
+  const previousSavingsP = useRef(savingsP);
   
 
   useEffect(() => {
@@ -48,6 +58,24 @@ const Page = () => {
             savedFormData.feedrate,
             savedFormData.commercial_oil_price
         );
+
+        energy_besparelser(
+            savedFormData.annual_days_sailing
+        );
+
+        fuel_besparelser(
+            savedFormData.oil_load,
+            savedFormData.ME_power,
+            savedFormData.annual_days_sailing
+        );
+
+        purifier_besparelser(
+            savedFormDataAdd.discharge_interval,
+            savedFormDataAdd.discharged_oil,
+            savedFormData.ME_oil_price
+        );
+
+      
 
     } catch (error) {
       console.error('Error parsing form data from session storage', error);
@@ -96,7 +124,24 @@ const Page = () => {
       previousSavingsRef.current = savings;
     }
     console.log('savedSavingsData:', savings);
-
+    if (JSON.stringify(previousSavingsE.current) !== JSON.stringify(savingsE)) {
+      sessionStorage.setItem('savingsDataE', JSON.stringify(savingsE));
+      console.log('SavingsE data saved to sessionStorage:', savingsE);
+      previousSavingsE.current = savingsE;
+    }
+    console.log('savedSavingsData:', savingsE);
+    if (JSON.stringify(previousSavingsF.current) !== JSON.stringify(savingsF)) {
+      sessionStorage.setItem('savingsDataF', JSON.stringify(savingsF));
+      console.log('SavingsF data saved to sessionStorage:', savingsF);
+      previousSavingsF.current = savingsF;
+    }
+    console.log('savedSavingsData:', savingsF);
+    if (JSON.stringify(previousSavingsP.current) !== JSON.stringify(savingsP)) {
+      sessionStorage.setItem('savingsDataP', JSON.stringify(savingsP));
+      console.log('SavingsP data saved to sessionStorage:', savingsP);
+      previousSavingsP.current = savingsP;
+    }
+    console.log('savedSavingsData:', savingsP);
     router.push('/downloadsite');
   };
 

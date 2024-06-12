@@ -1,3 +1,12 @@
+.container {
+  width: 230mm; /* Width of A4 paper */
+  height: 280mm; /* Height of A4 paper */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 0; /* Margin around the A4 paper */
+  background-color: white; /* Set the background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow to the container */
+}
+
 .root{
     --customColor: rgb(38, 96, 147);
     --customColor2: rgb(92, 140, 183);
@@ -100,12 +109,18 @@
   }
   
   .main table{
-    width:100%;
+    width:98%;
     border-collapse:collapse;
   }
   
+  .main table tbody td:nth-child(3) { /* Selector for den tredje kolonne (Total CO2) */
+    text-align: center; /* Centrerer indholdet */
+  }
+
   .main table thead th{
+    padding:4mm 0 4mm 1cm;
     height:1cm;
+    width: 5cm;
     color:var(--highlight-color);
   }
   
@@ -116,7 +131,7 @@
   }
   
   .main table tbody td{
-    padding:2mm 0;
+    padding:4mm 0 4mm 1cm;
     border-bottom:0.5mm solid var(--table-row-separator-color);
   }
   
@@ -131,11 +146,12 @@
   
   main table.summary{
     width:calc(40% + 2cm);
-    margin-left:60%;
+    margin-left:10 mm;
     margin-top:.5cm;
   }
   
   main table.summary tr.total{
+    font-size:13pt;
     font-weight:bold;
     background-color:var(--highlight-color);
   }
@@ -154,9 +170,11 @@
     -prince-float: bottom;
     float: none;
     padding:0 2cm .5cm 2cm;
+    margin-top: -10px;
   }
   
   .aside p{
+    font-size:7pt;
     margin:0 0 .25cm 0;
   }
   
@@ -178,3 +196,7 @@
     color:var(--font-color);
     background-color:var(--footer-bg-color);
   }
+
+  .center-table {
+    margin: 0 auto; /* Centrerer tabellen vandret */
+}
