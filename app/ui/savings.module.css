@@ -5,6 +5,7 @@
   padding: 0; /* Margin around the A4 paper */
   background-color: white; /* Set the background color */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow to the container */
+  
 }
 
 .root{
@@ -151,7 +152,7 @@
   }
   
   main table.summary tr.total{
-    font-size:13pt;
+    font-size:12pt;
     font-weight:bold;
     background-color:var(--highlight-color);
   }
@@ -162,15 +163,16 @@
   }
   
   main table.summary td{
-    padding:4mm 2cm 4mm 0;
+    padding:4mm 2cm 4mm 0%;
     border-bottom:0;
   }
   
+
   .aside{
     -prince-float: bottom;
     float: none;
     padding:0 2cm .5cm 2cm;
-    margin-top: -10px;
+    margin-top: -20px;
   }
   
   .aside p{

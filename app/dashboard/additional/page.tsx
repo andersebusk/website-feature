@@ -79,7 +79,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-3/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="fuel_oil_consumption"
                 type="number"
                 step="0.01"
@@ -101,7 +101,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-3/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="discharged_oil"
                 type="number"
                 step="0.01"
@@ -125,7 +125,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-3/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="discharge_interval"
                 type="number"
                 step="0.01"
@@ -148,7 +148,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-3/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="purifier_oil_consumption"
                 type="number"
                 step="0.01"

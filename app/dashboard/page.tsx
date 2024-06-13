@@ -102,7 +102,7 @@ export default function SubmissionForm() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="vessel_name"
                 type="text"
                 name="vessel_name"
@@ -123,7 +123,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="ME_type"
                   type="text"
                   name="ME_type"
@@ -141,7 +141,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="ME_power"
                   type="number"
                   name="ME_power"
@@ -163,7 +163,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="oil_load"
                   type="number"
                   name="oil_load"
@@ -184,7 +184,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="annual_days_sailing"
                   type="number"
                   name="annual_days_sailing"
@@ -204,11 +204,11 @@ export default function SubmissionForm() {
             </label>
               <div className="relative">
               <select
-                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="fuel_oil_sulfur"
                 name="fuel_oil_sulfur"
                 ref = {fuelOilSulfurRef}
-                required
+                
               >
                 <option value="">*Select a value</option>
                 <option value="0-0.5">Between 0 and 0.5</option>
@@ -228,7 +228,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="feedrate"
                   type="number"
                   step="0.01"
@@ -247,7 +247,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="BN_value"
                   type="number"
                   name="BN_value"
@@ -264,12 +264,12 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/6 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="com_oil_price"
                   type="number"
                   name="com_oil_price"
                   ref={commercial_oil_priceRef}
-                  placeholder="*Price of your commercial cylinder oil"
+                  placeholder="*Price of commercial cylinder oil"
                   required
                 />
                 <span style={{ right: '1174px', top: '16px' }} className="pointer-events-none absolute top-1/2 h/[18px] w/[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
@@ -282,13 +282,13 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/6 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="ME_oil_price"
                   type="number"
                   step="0.01"
                   name="ME_oil_price"
                   ref={ME_oil_priceRef}
-                  placeholder="*Price of your main engine oil"
+                  placeholder="*Price of main engine oil"
                   required
                 />
                 <span style={{ right: '1174px', top: '16px' }} className="pointer-events-none absolute top-1/2 h/[18px] w/[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
