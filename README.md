@@ -1,5 +1,4 @@
-## Next.js App Router Course - Starter
+## Calculation service for vessels
 
-This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
-
-For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.
+This is a calculation service for MFT's colleagues and costumers. 
+It's coded mostly in React typescript, with Node.js backend.
