@@ -224,7 +224,7 @@ export default function SubmissionForm() {
                 className="mb-3 mt-5 block text-xs font-medium text-gray-900"
                 htmlFor="feedrate"
               >
-                Feedrate (mm/min)
+                Feedrate (g/kWh)
               </label>
               <div className="relative">
                 <input
