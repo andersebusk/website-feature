@@ -2,10 +2,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { CurrencyDollarIcon } from '@heroicons/react/20/solid';
 import { UserIcon, CogIcon, BeakerIcon, ArrowRightIcon, CalendarIcon, ChartBarIcon, InformationCircleIcon} from '@heroicons/react/24/outline';
-import { Button } from '../ui/button'; // Adjust the import according to your project's structure
+import { Button } from '../ui/button';
 import { lusitana } from '@/app/ui/fonts';
-import { useRouter } from 'next/navigation'; // Import useRouter from 'next/router'
-import { Main } from 'next/document';
+import { useRouter } from 'next/navigation';
 
 export default function SubmissionForm() {
 
