@@ -4,7 +4,6 @@
   margin: 0 auto; /* Center the container horizontally */
   padding: 0; /* Margin around the A4 paper */
   background-color: white; /* Set the background color */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow to the container */
   
 }
 

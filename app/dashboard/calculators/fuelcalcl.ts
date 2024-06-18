@@ -7,9 +7,9 @@ const useFuelSavingsCalculation = () => {
         Load: number,
         ME_power: number,
         Days_sailing: number,
+        USD_MT: number,
+        FOC: number
     ): number[] {
-        const FOC: number = 170
-        const USD_MT: number = 500
         const ME_efficiency: number = 0.008
 
         const TD: number = (((FOC * ME_power)/1000)/1000)*24* (Load/100)

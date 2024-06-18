@@ -28,37 +28,31 @@ const App: React.FC = () => {
   const [formData, setFormData] = useState(null);
 
   const handleDownloadImage = () => {
-    const containerWidth = 230; // Width of A4 paper in mm
-    const containerHeight = 280; // Height of A4 paper in mm
+    const container = document.getElementById('captureContainer');
 
-    // Convert mm to pixels (1mm = 3.779527559 pixels)
-    const pixelWidth = containerWidth * 3.779527559;
-    const pixelHeight = containerHeight * 3.779527559;
+    if (container) {
+        // Convert mm to pixels (1mm = 3.779527559 pixels)
+        const mmToPx = (mm: number) => mm * 3.779527559;
+        const widthPx = mmToPx(230);
+        const heightPx = mmToPx(280);
 
-    // Get the viewport dimensions
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
+        // Create an off-screen canvas with the desired dimensions
+        const canvas = document.createElement('canvas');
+        canvas.width = widthPx;
+        canvas.height = heightPx;
 
-    // Calculate the starting point for capture to center the content
-    const startX = (viewportWidth - pixelWidth) / 2;
-    const startY = (viewportHeight - pixelHeight) / 2 + 37.795276; // Shift down by 1 cm (approx. 1 cm = 37.795276 pixels)
+        // Use html2canvas to draw the container content onto the canvas
+        html2canvas(container, { width: widthPx, height: heightPx, scale: 1 }).then((canvas) => {
+            // Convert canvas to image data URL
+            const imageData = canvas.toDataURL('image/png');
 
-    // Capture the center portion of the page
-    html2canvas(document.body, {
-        x: startX,
-        y: startY,
-        width: pixelWidth,
-        height: pixelHeight
-    }).then(canvas => {
-        // Convert canvas to image data URL
-        const imageData = canvas.toDataURL('image/png');
-
-        // Create a temporary anchor element to download the image
-        const link = document.createElement('a');
-        link.href = imageData;
-        link.download = 'SavingsOverview.png'; // Filename for the downloaded image
-        link.click();
-    });
+            // Create a temporary anchor element to download the image
+            const link = document.createElement('a');
+            link.href = imageData;
+            link.download = 'SavingsOverview.png'; // Filename for the downloaded image
+            link.click();
+        });
+    }
 };
 
   useEffect(() => {
@@ -170,7 +164,7 @@ const App: React.FC = () => {
   const currentDate = new Date().toLocaleDateString();
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="captureContainer">
     <div className={styles.root}>
       <header className={styles.header}>
         <div className={styles.headerSection}>
@@ -235,7 +229,7 @@ const App: React.FC = () => {
               <td>{Math.floor(Liters)}.00</td>
             </tr>
             <tr>
-              <td><b>Purifier savings</b></td>
+              <td><b>Centrifuge savings</b></td>
               <td>{Math.floor(USD_P)}.00</td>
               <td>{Math.floor(CO2_Tons_P)}.00</td>
               <td>{Math.floor(Liters_P)}.00</td>

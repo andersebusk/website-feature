@@ -1,0 +1,12 @@
+.tooltip-box {
+    width: 5cm; /* Set width to 5cm */
+    height: 5cm; /* Set height to 5cm */
+    padding: 10px;
+    background-color: white;
+    border-radius: 0.25rem;
+    position: absolute;
+    z-index: 10;
+    margin-top: 0.5rem; /* Adjust margin top as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for depth */
+  }
+  

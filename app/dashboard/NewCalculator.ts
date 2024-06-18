@@ -10,16 +10,16 @@ const useOilSavingsCalculation = () => {
         ME_power: number,
         Days_sailing: number,
         Feedrate_without: number,
-        Price_oil_L: number
+        Price_oil_L: number,
+        High_BN_oil: number,
+        Price_high: number
     ): number[] {
         const variabel: number = 99;
         const Used_Aux_engine_oil_BN: number = 20;
         const Used_Aux_engine_oil_density: number = 0.91;
         const Used_Aux_engine_oil_price: number = 0;
         const Aux_oil_replace: number = 0;
-        const High_BN_oil: number = 365;
         const Density_high: number = 0.95;
-        const Price_high: number = 3.5;
         const Density_ME: number = 0.87;
         const Feedrate_BOB: number = 0.8;
         const ME_system_oil_BN: number = 8;

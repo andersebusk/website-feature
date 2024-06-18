@@ -26,7 +26,9 @@ const Calculation = () => {
             savedFormData.ME_power,
             savedFormData.annual_days_sailing,
             savedFormData.feedrate,
-            savedFormData.commercial_oil_price
+            savedFormData.commercial_oil_price,
+            savedFormData.highBN,
+            savedFormData.highBNPrice
         );
     }
 }, []);

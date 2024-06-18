@@ -7,9 +7,9 @@ const usePurifierSavingsCalculation = () => {
         average_discharge_interval: number,
         average_volume_discharged: number,
         price_L: number,
+        maintenance: number
     ): number[] {
         const running_hours: number = 8760
-        const maintenance: number = 6000
 
         const liters_hour: number = average_volume_discharged / average_discharge_interval
 

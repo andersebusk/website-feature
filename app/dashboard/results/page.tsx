@@ -8,6 +8,7 @@ import useOilSavingsCalculation from '../NewCalculator';
 import useEnergySavingsCalculation from '../calculators/energycalc';
 import useFuelSavingsCalculation from '../calculators/fuelcalcl';
 import usePurifierSavingsCalculation from '../calculators/purifercalc';
+import { BackButton } from '@/app/ui/backbutton';
 
 
 
@@ -56,23 +57,29 @@ const Page = () => {
             savedFormData.ME_power,
             savedFormData.annual_days_sailing,
             savedFormData.feedrate,
-            savedFormData.commercial_oil_price
+            savedFormData.commercial_oil_price,
+            savedFormData.highBN,
+            savedFormData.highBNPrice
         );
 
         energy_besparelser(
-            savedFormData.annual_days_sailing
+            savedFormData.annual_days_sailing, 
+            savedFormDataAdd.fuel_price
         );
 
         fuel_besparelser(
             savedFormData.oil_load,
             savedFormData.ME_power,
-            savedFormData.annual_days_sailing
+            savedFormData.annual_days_sailing,
+            savedFormDataAdd.fuel_price,
+            savedFormDataAdd.SFOC_value
         );
 
         purifier_besparelser(
             savedFormDataAdd.discharge_interval,
             savedFormDataAdd.discharged_oil,
-            savedFormData.ME_oil_price
+            savedFormData.ME_oil_price,
+            savedFormDataAdd.maintenance_cost
         );
 
       
@@ -145,6 +152,15 @@ const Page = () => {
     router.push('/downloadsite');
   };
 
+  const handleBackAdditional = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    router.push('/dashboard/additional');
+  };
+
+  const handleBackDashboard = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    router.push('/dashboard');
+  };
 
 
   return (
@@ -185,6 +201,12 @@ const Page = () => {
         </div>
         <div>
           <GenerateSavings />
+          <BackButton className="mt-4 w-1/6" type="submit" onClick={handleBackAdditional}>
+        Go to Additional <ArrowRightIcon className="ml-auto h-4 w-4 text-gray-50" />
+        </BackButton> 
+        <BackButton className="mt-4 w-1/6" type="submit" onClick={handleBackDashboard}>
+        Go to General <ArrowRightIcon className="ml-auto h-4 w-4 text-gray-50" />
+        </BackButton>
         </div>
       </div>
     </form>
@@ -197,7 +219,7 @@ interface Submission {
 
 function GenerateSavings({ onClick }: Submission) {
   return (
-    <Button className="mt-5 w-1/7" type="submit" onClick={onClick}>
+    <Button className="mt-4 w-1/6" type="submit" onClick={onClick}>
       Generate savings <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
     </Button>
   );
