@@ -73,7 +73,7 @@ export default function LoginForm() {
           Please type in the following info to continue.
         </h1>
         <h1 className={`${lusitana.className} mb-3 text-0.5xl`}>
-          Required fields are marked with ' * '
+          Required fields are marked with &apos; * &apos;
         </h1>
         <div className="w-full">
           <div>
@@ -192,7 +192,7 @@ export default function LoginForm() {
         {<p>
           Effective Date: [17/05/2024] <br /><br />
 
-          Welcome to MFT's oils Calculator. <br />
+          Welcome to MFT&apos;s oils Calculator. <br />
           By accessing or using our services, you agree to comply with and be bound by these Terms and Conditions. Please read them carefully.
 
           1. Acceptance of Terms <br /><br />

@@ -171,10 +171,8 @@ const App: React.FC = () => {
           <div className={styles.logoAndName}>
           <Image
             src="/MFT-Logo1.png"
-            width={200
-            }
+            width={200}
             height={760}
-            className='hidden md:block'
             alt='Screenshots of the dashboard project showing desktop version'
           />
             <h1></h1>

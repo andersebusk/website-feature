@@ -104,15 +104,24 @@ const Page = () => {
     oil_load = 'N/A',
     annual_days_sailing = 'N/A',
     fuel_oil_sulfur = 'N/A',
-    feedrate = 'N/A'
+    feedrate = 'N/A',
+    highBN = 'N/A',
+    highBNPrice = 'N/A',
+    MainEngineType = 'N/A',
+    onboard_bn = 'N/A'
+
+
 
   } = formData;
 
   const {
-    purifier_oil = 'N/A',
+    fuel_price = 'N/A',
+    SFOC_value = 'N/A',
+    maintenance_cost = 'N/A',
     discharged_oil = 'N/A',
     discharge_interval = 'N/A',
     fuel_oil_consumption = 'N/A'
+
   } = formDataAdd as any;
 
   const {
@@ -183,20 +192,32 @@ const Page = () => {
           <p>Country: {country}</p>
           <br />
           <strong>Vessel information:</strong>
-          <p>Vessel Name: {vessel_name}</p>
-          <p>ME Power: {ME_power}</p>
-          <p>BN Value: {BN_value}</p>
-          <p>Scrubber: {scrubber ? 'Yes' : 'No'}</p>
-          <p>ME Oil Price: {ME_oil_price}</p>
-          <p>Commercial Oil Price: {commercial_oil_price}</p>
-          <p>Oil Load: {oil_load}</p>
-          <p>Annual Days Sailing: {annual_days_sailing}</p>
-          <p>Fuel Oil Sulfur: {fuel_oil_sulfur}</p>
-          <p>Feedrate: {feedrate}</p>
-          <p>ME purifier oil consumption: {purifier_oil}</p>
-          <p>Discharged Oil: {discharged_oil}</p>
-          <p>Discharge Interval: {discharge_interval}</p>
-          <p>Fuel Oil Consumption: {fuel_oil_consumption}</p>
+          <p>Vessel name: {vessel_name}</p>
+          <p>Scrubber fitted: {scrubber ? 'Yes' : 'No'}</p>
+          <p>Fuel oil sulfur (S%): {fuel_oil_sulfur}</p>
+          <p>Main engine type: {MainEngineType}</p>
+          <p>Main engine power  output (kW): {ME_power}</p>
+          <p>Average main engine Load (%): {oil_load}</p>
+          <p>Annual days sailing: {annual_days_sailing}</p>
+          <p>Cylinder oil feed rate (g/kWh): {feedrate}</p>
+          <p>Onboard cylinder oil BN: {onboard_bn}</p>
+          <p>Cost of primary cylinder oil (USD/L): {commercial_oil_price}</p>
+          <p>Cost of main engine system oil (USD/L): {ME_oil_price}</p>
+          <p>Requested cylinder oil BN from BOB System: {BN_value}</p>
+          <p>High BN oil for blending: {highBN}</p>
+          <p>Cost of high BN oil (USD/L): {highBNPrice}</p>
+          <br />
+          <strong>Additional information:</strong>
+          <br />
+          <strong>Fuel information</strong>
+          <p>Fuel oil consumption per day (MT/day): {fuel_oil_consumption}</p>
+          <p>Specific fuel oil consumption (g/kWh): {SFOC_value}</p>
+          <p>Cost of fuel Oil  USD/MT: {fuel_price}</p>
+          <br />
+          <strong>Main engine lube oil centrifuge</strong>
+          <p>Amount of system oil discharged at every de-sludging (specific to your purifier) (L): {discharged_oil}</p>
+          <p>Discharge interval from separator: {discharge_interval}</p>
+          <p>Approximate cost of purifier maintenance annually (USD): {maintenance_cost}</p>
           <br/>
         </div>
         <div>
