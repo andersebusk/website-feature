@@ -117,7 +117,7 @@
   }
   
   .main table tbody td:nth-child(3) { /* Selector for den tredje kolonne (Total CO2) */
-    text-align: center; /* Centrerer indholdet */
+    text-align: center; /* Højrejusterer teksten */
   }
 
   .main table thead th{
@@ -130,7 +130,7 @@
   .main table thead th:nth-of-type(2),
   .main table thead th:nth-of-type(3),
   .main table thead th:last-of-type{
-    width:2.5cm;
+    width:2cm;
   }
   
   .main table tbody td{

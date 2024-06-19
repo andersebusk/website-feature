@@ -65,6 +65,19 @@ export default function SubmissionForm() {
   const highBNOilPriceRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
+  const saveFieldToSessionStorage = (field: string, value: any) => {
+    const formDataFromStorage = sessionStorage.getItem('formData');
+    let savedFormData = formDataFromStorage ? JSON.parse(formDataFromStorage) : {};
+    savedFormData[field] = value;
+    sessionStorage.setItem('formData', JSON.stringify(savedFormData));
+  };
+
+  const handleInputChange = (ref: React.RefObject<HTMLInputElement>, field: string) => {
+    if (ref.current) {
+      saveFieldToSessionStorage(field, ref.current.value);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   
@@ -156,6 +169,7 @@ export default function SubmissionForm() {
                 ref={vesselNameRef}
                 placeholder="*Enter the name of your vessel"
                 required
+                onBlur={() => handleInputChange(vesselNameRef, 'vessel_name')}
               />
               <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
@@ -225,6 +239,7 @@ export default function SubmissionForm() {
                   ref={MainEngineTypeRef}
                   placeholder="*Enter the type of your main engine"
                   required
+                  onBlur={() => handleInputChange(MainEngineTypeRef, 'ME_type')}
                 />
                 <CogIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
@@ -244,6 +259,7 @@ export default function SubmissionForm() {
                   ref={ME_powerRef}
                   placeholder="*"
                   required
+                  onBlur={() => handleInputChange(ME_powerRef, 'ME_power')}
                 />
                 <span style={{ right: '0', top: '16px' }} className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
                 <CogIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -268,6 +284,7 @@ export default function SubmissionForm() {
                   max={100}
                   ref = {oilLoadRef}
                   required
+                  onBlur={() => handleInputChange(oilLoadRef, 'oil_load')}
                 />
                 <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
@@ -291,6 +308,7 @@ export default function SubmissionForm() {
                   max={365}
                   ref = {annualDaysSailingRef}
                   required
+                  onBlur={() => handleInputChange(annualDaysSailingRef, 'annual_days_sailing')}
                 />
                 <CalendarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
@@ -315,6 +333,7 @@ export default function SubmissionForm() {
                   placeholder="*"
                   ref = {feedrateRef}
                   required
+                  onBlur={() => handleInputChange(feedrateRef, 'feedrate')}
                 />
                 <span style={{ right: '1200px', top: '16px' }} className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
                 <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -339,6 +358,7 @@ export default function SubmissionForm() {
                   placeholder="*"
                   ref = {onBoardRef}
                   required
+                  onBlur={() => handleInputChange(onBoardRef, 'onboard_bn')}
                 />
                 <span style={{ right: '1200px', top: '16px' }} className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
                 <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -359,6 +379,7 @@ export default function SubmissionForm() {
                   ref={commercial_oil_priceRef}
                   placeholder="*"
                   required
+                  onBlur={() => handleInputChange(commercial_oil_priceRef, 'commercial_oil_price')}
                 />
                 <span style={{ right: '1174px', top: '16px' }} className="pointer-events-none absolute top-1/2 h/[18px] w/[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
                 <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -399,8 +420,11 @@ export default function SubmissionForm() {
                 />
                 {showTooltipBN && (
                   <div className="absolute z-10 bg-white shadow-md p-2 rounded-md mt-1 text-sm"
-                      style={{ width: '450px', height: '90px', padding: '10px'}}>
-                    This is the requested BN of the blended oil from the BOB system. <br />
+                      style={{ width: '460px', height: '80px', padding: '10px'}}>
+                        This field is depending on whether your vessel has a scrubber or not.
+                      If you have a scrubber: Typical values are between 90-120 BN. <br />
+                      For compliant vessels (no scrubber): Typical values around 55 BN.
+                     <br />
                   </div>
                 )}
               </div>
@@ -415,6 +439,7 @@ export default function SubmissionForm() {
                 ref={BN_valueRef}
                 placeholder="*Requested BN of blended oil"
                 required
+                onBlur={() => handleInputChange(BN_valueRef, 'BN_value')}
               />
               <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
@@ -434,8 +459,15 @@ export default function SubmissionForm() {
                   />
                   {showTooltipBNHigh && (
                     <div className="absolute z-10 bg-white shadow-md p-2 rounded-md mt-1 text-sm"
-                        style={{ width: '450px', height: '90px', padding: '10px' }}>
-                      This is the high BN oil which will be used for blending <br />
+                        style={{ width: '460px', height: '160px', padding: '10px' }}>
+                        This field is depending on the BN of the requested oil from the BOB.
+                        Typical high BN values for blending are: <br />
+                        100 BN <br />
+                        140 BN<br />
+                        300 BN<br />
+                        360 BN<br />
+                        400 BN
+                       <br />
                     </div>
                   )}
                 </div>
@@ -450,6 +482,7 @@ export default function SubmissionForm() {
                   ref={highBNOilRef}
                   placeholder="*"
                   required
+                  onBlur={() => handleInputChange(highBNOilRef, 'highBN')}
                 />
                 <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
@@ -468,6 +501,7 @@ export default function SubmissionForm() {
                   ref={highBNOilPriceRef}
                   placeholder="*"
                   required
+                  onBlur={() => handleInputChange(highBNOilPriceRef, 'highBNPrice')}
                 />
                 <span style={{ right: '1174px', top: '16px' }} className="pointer-events-none absolute top-1/2 h/[18px] w/[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
                 <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />

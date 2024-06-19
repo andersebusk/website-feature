@@ -16,6 +16,19 @@ export default function SubmissionFormAdd() {
   const approxCostRef = useRef<HTMLInputElement>(null);
   const router = useRouter(); 
 
+  const saveFieldToSessionStorage = (field: string, value: any) => {
+    const formDataFromStorage = sessionStorage.getItem('formDataAdd');
+    let savedFormDataAdd = formDataFromStorage ? JSON.parse(formDataFromStorage) : {};
+    savedFormDataAdd[field] = value;
+    sessionStorage.setItem('formDataAdd', JSON.stringify(savedFormDataAdd));
+  };
+
+  const handleInputChange = (ref: React.RefObject<HTMLInputElement>, field: string) => {
+    if (ref.current) {
+      saveFieldToSessionStorage(field, ref.current.value);
+    }
+  };
+
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -101,6 +114,7 @@ export default function SubmissionFormAdd() {
                 ref={fuelOilConsumptionRef}
                 placeholder="*"
                 required
+                onBlur={() => handleInputChange(fuelOilConsumptionRef, 'fuel_oil_consumption')}
               />
               <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
@@ -124,6 +138,7 @@ export default function SubmissionFormAdd() {
                 placeholder="*Specific fuel oil consumption"
                 ref = {SFOCref}
                 required
+                onBlur={() => handleInputChange(SFOCref, 'SFOC_value')}
               />
               <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
@@ -148,6 +163,7 @@ export default function SubmissionFormAdd() {
                 placeholder="*"
                 ref = {fuelPriceRef}
                 required
+                onBlur={() => handleInputChange(fuelPriceRef, 'fuel_price')}
               />
               <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
@@ -177,6 +193,7 @@ export default function SubmissionFormAdd() {
                 placeholder="*"
                 ref = {dischargedOilRef}
                 required
+                onBlur={() => handleInputChange(dischargedOilRef, 'discharged_oil')}
               />
               <span style={{ right: '1185px', top: '16px' }} className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
               <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -201,6 +218,7 @@ export default function SubmissionFormAdd() {
                 placeholder="*Enter the interval in hours"
                 ref = {dischargeIntervalRef}
                 required
+                onBlur={() => handleInputChange(dischargeIntervalRef, 'discharge_interval')}
               />
               <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
@@ -224,6 +242,7 @@ export default function SubmissionFormAdd() {
                 placeholder="*"
                 ref = {approxCostRef}
                 required
+                onBlur={() => handleInputChange(approxCostRef, 'maintenance_cost')}
               />
               <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>

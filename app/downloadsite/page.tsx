@@ -218,34 +218,34 @@ const App: React.FC = () => {
             <tr>
               <th className={styles.spacing}>Savings for {vessel_name}:</th>
               <th className={styles.spacing}>USD rate</th>
-              <th className={styles.spacing}>CO2 rate (T)</th>
+              <th className={styles.spacing}>CO2 rate (tCO2e)</th>
               <th className={styles.spacing}>Oil rate (L)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><b>Cylinder oil savings</b></td>
-              <td>${(Math.floor(USD)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-              <td>{(Math.floor(CO2_Tons)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-              <td>{(Math.floor(Liters)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+              <td>${(Math.floor(USD)).toLocaleString('en-US')}</td>
+              <td>{(Math.floor(CO2_Tons)).toLocaleString('en-US')}</td>
+              <td>{(Math.floor(Liters)).toLocaleString('en-US')}</td>
             </tr>
             <tr>
               <td><b>Centrifuge savings</b></td>
-              <td>${(Math.floor(USD_P)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-              <td>{(Math.floor(CO2_Tons_P)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-              <td>{(Math.floor(Liters_P)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+              <td>${(Math.floor(USD_P)).toLocaleString('en-US')}</td>
+              <td>{(Math.floor(CO2_Tons_P)).toLocaleString('en-US')}</td>
+              <td>{(Math.floor(Liters_P)).toLocaleString('en-US')}</td>
             </tr>
             <tr>
               <td><b>Energy savings</b></td>
-              <td>${(Math.floor(USD_E)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-              <td>{(Math.floor(CO2_Tons_E)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-              <td>{(Math.floor(Liters_E)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+              <td>${(Math.floor(USD_E)).toLocaleString('en-US')}</td>
+              <td>{(Math.floor(CO2_Tons_E)).toLocaleString('en-US')}</td>
+              <td>{(Math.floor(Liters_E)).toLocaleString('en-US')}</td>
             </tr>
             <tr>
               <td><b>Fuel savings</b></td>
-              <td>${(Math.floor(USD_F)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-              <td>{(Math.floor(CO2_Tons_F)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-              <td>{(Math.floor(Liters_F)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+              <td>${(Math.floor(USD_F)).toLocaleString('en-US')}</td>
+              <td>{(Math.floor(CO2_Tons_F)).toLocaleString('en-US')}</td>
+              <td>{(Math.floor(Liters_F)).toLocaleString('en-US')}</td>
             </tr>
           </tbody>
         </table>
@@ -259,10 +259,10 @@ const App: React.FC = () => {
                 Total oil saving:
               </th>
               <td>
-              ${(Math.floor(USD + USD_E + USD_F + USD_P)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} <br />
-              {(Math.floor(CO2_Tons + CO2_Tons_E + CO2_Tons_F + CO2_Tons_P)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} tCO2e<br />
-              ${(Math.floor((CO2_Tons_F*90)/2)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} < br />
-              {(Math.floor(Liters + Liters_E + Liters_F + Liters_P)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} L
+              ${(Math.floor(USD + USD_E + USD_F + USD_P)).toLocaleString('en-US')} <br />
+              {(Math.floor(CO2_Tons + CO2_Tons_E + CO2_Tons_F + CO2_Tons_P)).toLocaleString('en-US')} tCO2e<br />
+              ${(Math.floor((CO2_Tons_F*90)/2)).toLocaleString('en-US')} < br />
+              {(Math.floor(Liters + Liters_E + Liters_F + Liters_P)).toLocaleString('en-US')} L
               </td>
             </tr>
           </tbody>
