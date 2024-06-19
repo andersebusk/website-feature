@@ -29,6 +29,7 @@ const App: React.FC = () => {
 
   const handleDownloadImage = () => {
     const container = document.getElementById('captureContainer');
+    const savedFormData = JSON.parse(sessionStorage.getItem('formData') || '{}');
 
     if (container) {
         // Convert mm to pixels (1mm = 3.779527559 pixels)
@@ -49,7 +50,7 @@ const App: React.FC = () => {
             // Create a temporary anchor element to download the image
             const link = document.createElement('a');
             link.href = imageData;
-            link.download = 'SavingsOverview.png'; // Filename for the downloaded image
+            link.download = `SEA-Mate Value Calculation ${savedFormData.vessel_name}.png`; // Filename for the downloaded image
             link.click();
         });
     }
@@ -151,6 +152,7 @@ const App: React.FC = () => {
 
   const {
     vessel_name = 'N/A',
+    MainEngineType = 'N/A',
   } = formData as any;
 
 
@@ -185,29 +187,30 @@ const App: React.FC = () => {
           </div>
         </div>
         <hr className={styles.hr} />
-        <div className={styles.headerSection}>
-          <div className={styles.issuedTo}>
-            <h3>Issued to</h3>
-            <p>
-              {company} <br />
-              {email} <br />
-              {phone} <br />
-              {country}
-            </p>
+          <div className={styles.headerSection}>
+            <div className={styles.issuedTo}>
+              <h3>Issued to</h3>
+              <p>
+                {company} <br />
+                {email} <br />
+                {phone} <br />
+                {country}
+              </p>
+            </div>
+            <div className={`${styles.issuedTo} ${styles.contact}`}>
+            <h3>Contact</h3>
+              <p>
+                mftservice@marinefluid.dk <br />
+                +45 2476 9512 <br />
+                <p><a href="https://marinefluid.dk/">www.marinefluid.dk</a></p> <br />
+                Contact us for more information!
+              </p>
+            </div>
           </div>
-          <div>
-            <p>
-              <b>Contact</b>
-              <br />
-              Please contact us if you have any questions regarding the savings overview.
-            </p>
-          </div>
-        </div>
       </header>
       <footer className={styles.footer}>
-        <a className={styles.a} href="https://marinefluid.dk/">https://marinefluid.dk/</a>
-        <span>+45 2476 9512</span>
-        <span>Strandvejen 60, 2900 Hellerup, Denmark</span>
+        Congratulations! You are on the path to saving the world while saving money! <br />
+        Keep up the good work!
       </footer>
       <main className={styles.main}>
         <table>
@@ -222,27 +225,27 @@ const App: React.FC = () => {
           <tbody>
             <tr>
               <td><b>Cylinder oil savings</b></td>
-              <td>{Math.floor(USD)}.00</td>
-              <td>{Math.floor(CO2_Tons)}.00</td>
-              <td>{Math.floor(Liters)}.00</td>
+              <td>${(Math.floor(USD)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+              <td>{(Math.floor(CO2_Tons)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+              <td>{(Math.floor(Liters)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
             </tr>
             <tr>
               <td><b>Centrifuge savings</b></td>
-              <td>{Math.floor(USD_P)}.00</td>
-              <td>{Math.floor(CO2_Tons_P)}.00</td>
-              <td>{Math.floor(Liters_P)}.00</td>
+              <td>${(Math.floor(USD_P)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+              <td>{(Math.floor(CO2_Tons_P)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+              <td>{(Math.floor(Liters_P)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
             </tr>
             <tr>
               <td><b>Energy savings</b></td>
-              <td>{Math.floor(USD_E)}.00</td>
-              <td>{Math.floor(CO2_Tons_E)}.00</td>
-              <td>{Math.floor(Liters_E)}.00</td>
+              <td>${(Math.floor(USD_E)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+              <td>{(Math.floor(CO2_Tons_E)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+              <td>{(Math.floor(Liters_E)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
             </tr>
             <tr>
               <td><b>Fuel savings</b></td>
-              <td>{Math.floor(USD_F)}.00</td>
-              <td>{Math.floor(CO2_Tons_F)}.00</td>
-              <td>{Math.floor(Liters_F)}.00</td>
+              <td>${(Math.floor(USD_F)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+              <td>{(Math.floor(CO2_Tons_F)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+              <td>{(Math.floor(Liters_F)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
             </tr>
           </tbody>
         </table>
@@ -250,14 +253,16 @@ const App: React.FC = () => {
           <tbody>
             <tr className={styles.total}>
               <th>
-                Total USD: <br />
-                Total CO2 (Tonnes): <br />
-                Total Oil (Litres):
+                Total operational saving: <br />
+                Total CO2 reduction: <br />
+                EU ETS saving: <br />
+                Total oil saving:
               </th>
               <td>
-              ${Math.floor(USD + USD_E + USD_F + USD_P)}.00 <br />
-              {Math.floor(CO2_Tons + CO2_Tons_E + CO2_Tons_F + CO2_Tons_P)}.00 <br />
-              {Math.floor(Liters + Liters_E + Liters_F + Liters_P)}.00
+              ${(Math.floor(USD + USD_E + USD_F + USD_P)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} <br />
+              {(Math.floor(CO2_Tons + CO2_Tons_E + CO2_Tons_F + CO2_Tons_P)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} tCO2e<br />
+              ${(Math.floor((CO2_Tons_F*90)/2)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} < br />
+              {(Math.floor(Liters + Liters_E + Liters_F + Liters_P)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} L
               </td>
             </tr>
           </tbody>

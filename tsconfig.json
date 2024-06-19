@@ -35,7 +35,7 @@
     ".next/types/**/*.ts",
     "app/lib/placeholder-data.js",
     "scripts/seed.js"
-, "app/dashboard/results/layoutforpdf/script.jser.js", "app/dashboard/calculators/calculation.jsx", "app/dashboard/NewCalculator.js"  ],
+, "app/dashboard/results/layoutforpdf/script.jser.js", "app/dashboard/calculators/calculation.jsx", "app/dashboard/NewCalculator.js", "app/ui/dashboard/calc-logo.tsx"],
   "exclude": [
     "node_modules"
   ]

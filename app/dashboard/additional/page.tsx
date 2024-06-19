@@ -93,7 +93,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-3/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="fuel_oil_consumption"
                 type="number"
                 step="0.01"
@@ -116,7 +116,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-3/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="SFOC"
                 type="number"
                 step="0.01"
@@ -140,7 +140,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-3/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="fuel_price"
                 type="number"
                 step="0.01"
@@ -169,7 +169,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-3/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="discharged_oil"
                 type="number"
                 step="0.01"
@@ -189,11 +189,11 @@ export default function SubmissionFormAdd() {
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
               htmlFor="discharge_interval"
             >
-              Discharge interval from separator
+              Discharge interval from separator (h)
             </label>
             <div className="relative">
               <input
-                className="peer block w-3/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="discharge_interval"
                 type="number"
                 step="0.01"
@@ -216,7 +216,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-3/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="approx_cost_purifier_annually_spares"
                 type="number"
                 step="0.01"

@@ -161,6 +161,7 @@ export default function LoginForm() {
             </div>
           </div>
         </div>
+        < br />
         <div className="flex items-center">
         <label htmlFor="terms" className=" ">
         <input type="checkbox" id="terms" name="terms" required onChange={(e) => setIsChecked(e.target.checked)} />

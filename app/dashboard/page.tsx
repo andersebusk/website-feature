@@ -10,8 +10,11 @@ export default function SubmissionForm() {
 
   const [hasScrubber, setHasScrubber] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [showTooltipBN, setShowTooltipBN] = useState(false);
+  const [showTooltipBNHigh, setShowTooltipBNHigh] = useState(false);
 
   const fuelOilSulfurRef = useRef<HTMLInputElement>(null);
+
 
   const handleScrubberClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked;
@@ -30,6 +33,22 @@ export default function SubmissionForm() {
 
   const handleTooltipLeave = () => {
     setShowTooltip(false);
+  };
+
+  const handleBNtipHover = () => {
+    setShowTooltipBN(true);
+  };
+
+  const handleBNtipLeave = () => {
+    setShowTooltipBN(false);
+  };
+
+  const handleBNHighHover = () => {
+    setShowTooltipBNHigh(true);
+  };
+
+  const handleBNHighLeave = () => {
+    setShowTooltipBNHigh(false);
   };
 
   const vesselNameRef = useRef<HTMLInputElement>(null);
@@ -130,7 +149,7 @@ export default function SubmissionForm() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="vessel_name"
                 type="text"
                 name="vessel_name"
@@ -151,7 +170,7 @@ export default function SubmissionForm() {
               onChange={handleScrubberClick}
               checked={hasScrubber}
             />
-            <label htmlFor="scrubber" className="text-sm">
+            <label htmlFor="scrubber" className="mb-3 mt-3 block text-sm font-medium text-gray-900">
               The vessel has a scrubber installed
             </label>
             <div
@@ -165,8 +184,8 @@ export default function SubmissionForm() {
                 aria-hidden="true"
               />
               {showTooltip && (
-                <div className="absolute z-10 bg-white shadow-md p-2 rounded-md mt-1"
-                     style={{ width: '450px', height: '90px', padding: '10px' }}>
+                <div className="absolute z-10 bg-white shadow-md p-2 rounded-md mt-1 text-sm mb-3 mt-5 block text-sm font-medium text-gray-900"
+                     style={{ width: '450px', height: '80px', padding: '10px' }}>
                   Check this box if your vessel has a scrubber. <br />
                   If yes: Fuel oil Sulfur will be calculated above 0,5%S  <br />
                   If no: Fuel oil Sulfur will be calculated between 0- 0,5%S
@@ -183,7 +202,7 @@ export default function SubmissionForm() {
           </label>
           <div className="relative">
             <input
-              className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+              className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
               id="fuel_oil_sulfur"
               name="fuel_oil_sulfur"
               ref={fuelOilSulfurRef}
@@ -199,7 +218,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="ME_type"
                   type="text"
                   name="ME_type"
@@ -217,7 +236,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="ME_power"
                   type="number"
                   step="0.01"
@@ -240,7 +259,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="oil_load"
                   type="number"
                   step="0.01"
@@ -263,7 +282,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="annual_days_sailing"
                   type="number"
                   step="0.01"
@@ -288,7 +307,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="feedrate"
                   type="number"
                   step="0.01"
@@ -312,7 +331,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="Onboard_cylinder_oil"
                   type="number"
                   step="0.01"
@@ -332,7 +351,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-2/6 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-1/4 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="com_oil_price"
                   type="number"
                   step="0.01"
@@ -351,7 +370,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-2/6 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-1/4 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="ME_oil_price"
                   type="number"
                   step="0.01"
@@ -366,30 +385,64 @@ export default function SubmissionForm() {
             </div>
           </div>
           <div className="mt-4">
-              <label className="mb-3 mt-5 block text-xs font-medium text-gray-900" htmlFor="BN_value">
+            <label className="mb-3 mt-5 block text-xs font-medium text-gray-900 flex items-center" htmlFor="BN_value">
               Requested cylinder oil BN From BOB System
-              </label>
-              <div className="relative">
-                <input
-                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
-                  id="BN_value"
-                  type="number"
-                  step="0.01"
-                  name="BN_value"
-                  ref={BN_valueRef}
-                  placeholder="*Requested BN of blended oil"
-                  required
+              <div
+                className="relative ml-2"
+                onMouseEnter={handleBNtipHover}
+                onMouseLeave={handleBNtipLeave}
+                onClick={() => setShowTooltipBN(!showTooltipBN)}
+              >
+                <InformationCircleIcon
+                  className="h-5 w-5 text-gray-500 cursor-pointer"
+                  aria-hidden="true"
                 />
-                <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                {showTooltipBN && (
+                  <div className="absolute z-10 bg-white shadow-md p-2 rounded-md mt-1 text-sm"
+                      style={{ width: '450px', height: '90px', padding: '10px'}}>
+                    This is the requested BN of the blended oil from the BOB system. <br />
+                  </div>
+                )}
               </div>
+            </label>
+            <div className="relative">
+              <input
+                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                id="BN_value"
+                type="number"
+                step="0.01"
+                name="BN_value"
+                ref={BN_valueRef}
+                placeholder="*Requested BN of blended oil"
+                required
+              />
+              <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
-          <div className="mt-4">
-              <label className="mb-3 mt-5 block text-xs font-medium text-gray-900" htmlFor="high_bn_oil">
-              High BN oil for blending
+          </div>
+            <div className="mt-4">
+              <label className="mb-3 mt-5 block text-xs font-medium text-gray-900 flex items-center" htmlFor="high_bn_oil">
+                High BN oil for blending
+                <div
+                  className="relative ml-2"
+                  onMouseEnter={handleBNHighHover}
+                  onMouseLeave={handleBNHighLeave}
+                  onClick={() => setShowTooltipBNHigh(!showTooltipBNHigh)}
+                >
+                  <InformationCircleIcon
+                    className="h-5 w-5 text-gray-500 cursor-pointer"
+                    aria-hidden="true"
+                  />
+                  {showTooltipBNHigh && (
+                    <div className="absolute z-10 bg-white shadow-md p-2 rounded-md mt-1 text-sm"
+                        style={{ width: '450px', height: '90px', padding: '10px' }}>
+                      This is the high BN oil which will be used for blending <br />
+                    </div>
+                  )}
+                </div>
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-2/6 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="high_bn_oil"
                   type="number"
                   step="0.01"
@@ -407,7 +460,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-2/6 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-1/4 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="high_bn_oil_price"
                   type="number"
                   step="0.01"

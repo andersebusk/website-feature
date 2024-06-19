@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useEffect, useState } from 'react';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
 import { useRouter } from 'next/navigation';
 import { lusitana } from '@/app/ui/fonts';
@@ -25,6 +25,15 @@ const Page = () => {
   const previousSavingsE = useRef(savingsE);
   const previousSavingsF = useRef(savingsF);
   const previousSavingsP = useRef(savingsP);
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  const handleTooltipHover = () => {
+    setShowTooltip(true);
+  };
+
+  const handleTooltipLeave = () => {
+    setShowTooltip(false);
+  };
   
 
   useEffect(() => {
@@ -212,13 +221,37 @@ const Page = () => {
           <strong>Fuel information</strong>
           <p>Fuel oil consumption per day (MT/day): {fuel_oil_consumption}</p>
           <p>Specific fuel oil consumption (g/kWh): {SFOC_value}</p>
-          <p>Cost of fuel Oil  USD/MT: {fuel_price}</p>
+          <p>Cost of fuel oil (USD/MT): {fuel_price}</p>
           <br />
           <strong>Main engine lube oil centrifuge</strong>
           <p>Amount of system oil discharged at every de-sludging (specific to your purifier) (L): {discharged_oil}</p>
-          <p>Discharge interval from separator: {discharge_interval}</p>
+          <p>Discharge interval from separator (h): {discharge_interval}</p>
           <p>Approximate cost of purifier maintenance annually (USD): {maintenance_cost}</p>
-          <br/>
+          <div className="w-full">
+          <div className="flex items-center mb-3 mt-6">
+            <label htmlFor="NB" className="mb-3 mt-3 block text-sm font-medium text-gray-900">
+              NB
+            </label>
+            <div
+              className="relative ml-2"
+              onMouseEnter={handleTooltipHover}
+              onMouseLeave={handleTooltipLeave}
+              onClick={() => setShowTooltip(!showTooltip)}
+            >
+              <InformationCircleIcon
+                className="h-5 w-5 text-gray-500 cursor-pointer"
+                aria-hidden="true"
+              />
+              {showTooltip && (
+                <div className="absolute z-10 bg-white shadow-md p-2 rounded-md mt-1 text-sm mb-3 mt-5 block text-sm font-medium text-gray-900"
+                     style={{ width: '450px', height: '80px', padding: '10px' }}>
+                  Our calculations are based on the assumption that the cylinder oil feed rate will be reduced to 0.8 after the installation of BOB.
+                  Additionally, we assume that 1 ton of oil equals 1000 liters.
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
         </div>
         <div>
           <GenerateSavings />
