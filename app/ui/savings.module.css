@@ -194,8 +194,6 @@
     border-bottom:0;
   }
 
-  
-
   .aside{
     -prince-float: bottom;
     float: none;
@@ -223,7 +221,7 @@
     align-items:center;
     text-align: center;
     height:2.3cm;
-    padding:0 2cm;
+    padding:0 2.5cm;
     color : var(--footer-color);
     background-color:var(--highlight-color);
     font-size:14pt;
@@ -236,6 +234,7 @@
   .contact {
     margin-right: 2.5cm; /* Adjust margin-left as needed */
   }
+  
 
   .image {
     position: absolute;
@@ -243,4 +242,7 @@
     right: 100px;
     max-width: 130px; /* Juster billedstørrelse efter behov */
     height: auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between
 }
