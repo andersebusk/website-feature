@@ -79,9 +79,20 @@ export default function SubmissionForm() {
       saveFieldToSessionStorage(field, ref.current.value);
     }
   };
+  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const comInput = commercial_oil_priceRef.current;
+    const feedrateInput = feedrateRef.current;
+
+  if (comInput && (comInput.value.trim() === '' || isNaN(parseFloat(comInput.value)))) {
+    comInput.value = '2.0';
+  }
+  if (feedrateInput && (feedrateInput.value.trim() === '' || isNaN(parseFloat(feedrateInput.value)))) {
+    feedrateInput.value = '0.95';
+  }
   
     if (
       vesselNameRef.current &&
@@ -256,10 +267,10 @@ export default function SubmissionForm() {
                   className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="ME_power"
                   type="number"
-                  step="0.01"
                   name="ME_power"
                   ref={ME_powerRef}
                   placeholder="*"
+                  min={1}
                   required
                   onBlur={() => handleInputChange(ME_powerRef, 'ME_power')}
                 />
@@ -283,6 +294,7 @@ export default function SubmissionForm() {
                   step="0.01"
                   name="oil_load"
                   placeholder="*"
+                  min={1}
                   max={100}
                   ref = {oilLoadRef}
                   required
@@ -307,6 +319,7 @@ export default function SubmissionForm() {
                   step="0.01"
                   name="annual_days_sailing"
                   placeholder="*"
+                  min={1}
                   max={365}
                   ref = {annualDaysSailingRef}
                   required
@@ -332,9 +345,8 @@ export default function SubmissionForm() {
                   type="number"
                   step="0.01"
                   name="feedrate"
-                  placeholder="*"
+                  placeholder="*Estimate if left empty: 0.95"
                   ref = {feedrateRef}
-                  required
                   onBlur={() => handleInputChange(feedrateRef, 'feedrate')}
                 />
                 <span style={{ right: '1200px', top: '16px' }} className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
@@ -354,8 +366,7 @@ export default function SubmissionForm() {
                 <input
                   className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="Onboard_cylinder_oil"
-                  type="number"
-                  step="0.01"
+                  type="number"                 
                   name="Onboard_cylinder_oil"
                   placeholder="*"
                   ref = {onBoardRef}
@@ -379,8 +390,7 @@ export default function SubmissionForm() {
                   step="0.01"
                   name="com_oil_price"
                   ref={commercial_oil_priceRef}
-                  placeholder="*"
-                  required
+                  placeholder="*Estimate if left empty: 2.0"                 
                   onBlur={() => handleInputChange(commercial_oil_priceRef, 'commercial_oil_price')}
                 />
                 <span style={{ right: '1174px', top: '16px' }} className="pointer-events-none absolute top-1/2 h/[18px] w/[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
@@ -435,8 +445,7 @@ export default function SubmissionForm() {
               <input
                 className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="BN_value"
-                type="number"
-                step="0.01"
+                type="number"            
                 name="BN_value"
                 ref={BN_valueRef}
                 placeholder="*Requested BN of blended oil"
@@ -479,7 +488,6 @@ export default function SubmissionForm() {
                   className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="high_bn_oil"
                   type="number"
-                  step="0.01"
                   name="high_bn_oil"
                   ref={highBNOilRef}
                   placeholder="*"

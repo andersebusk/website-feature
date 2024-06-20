@@ -35,6 +35,24 @@ export default function SubmissionFormAdd() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const sfocInput = SFOCref.current;
+    const fuelPriceInput = fuelPriceRef.current;
+    const dischargedOilInput = dischargedOilRef.current;
+    const approxCostInput = approxCostRef.current;
+
+    if (sfocInput && (sfocInput.value.trim() === '' || isNaN(parseFloat(sfocInput.value)))) {
+    sfocInput.value = '196';
+    }
+    if (fuelPriceInput && (fuelPriceInput.value.trim() === '' || isNaN(parseFloat(fuelPriceInput.value)))) {
+    fuelPriceInput.value = '600';
+    }
+    if (dischargedOilInput && (dischargedOilInput.value.trim() === '' || isNaN(parseFloat(dischargedOilInput.value)))) {
+    dischargedOilInput.value = '1';
+    }
+    if (approxCostInput && (approxCostInput.value.trim() === '' || isNaN(parseFloat(approxCostInput.value)))) {
+    approxCostInput.value = '6000';
+    }
+
     if (
       fuelPriceRef.current &&
       dischargedOilRef.current &&
@@ -137,9 +155,8 @@ export default function SubmissionFormAdd() {
                 type="number"
                 step="0.01"
                 name="SFOC"
-                placeholder="*Specific fuel oil consumption"
+                placeholder="*Estimate if left empty: 196 g/kWh"
                 ref = {SFOCref}
-                required
                 onBlur={() => handleInputChange(SFOCref, 'SFOC_value')}
               />
               <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -162,9 +179,8 @@ export default function SubmissionFormAdd() {
                 type="number"
                 step="0.01"
                 name="fuel_price"
-                placeholder="*"
+                placeholder="* Estimate if left empty 600 USD/MT"
                 ref = {fuelPriceRef}
-                required
                 onBlur={() => handleInputChange(fuelPriceRef, 'fuel_price')}
               />
               <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -192,9 +208,8 @@ export default function SubmissionFormAdd() {
                 type="number"
                 step="0.01"
                 name="discharged_oil"
-                placeholder="*"
+                placeholder="*Estimate if left empty: 1 L"
                 ref = {dischargedOilRef}
-                required
                 onBlur={() => handleInputChange(dischargedOilRef, 'discharged_oil')}
               />
               <span style={{ right: '1185px', top: '16px' }} className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
@@ -241,9 +256,8 @@ export default function SubmissionFormAdd() {
                 type="number"
                 step="0.01"
                 name="approx_cost_purifier_annually_spares"
-                placeholder="*"
+                placeholder="*Estimate if left empty: 6000 USD"
                 ref = {approxCostRef}
-                required
                 onBlur={() => handleInputChange(approxCostRef, 'maintenance_cost')}
               />
               <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
