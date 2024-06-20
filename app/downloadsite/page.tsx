@@ -50,7 +50,7 @@ const App: React.FC = () => {
             // Create a temporary anchor element to download the image
             const link = document.createElement('a');
             link.href = imageData;
-            link.download = `SEA-Mate Value Calculation ${savedFormData.vessel_name}.png`; // Filename for the downloaded image
+            link.download = `SEA-Mate Value Calculation - ${savedFormData.vessel_name}.png`; // Filename for the downloaded image
             link.click();
         });
     }
@@ -203,7 +203,6 @@ const App: React.FC = () => {
                 mftservice@marinefluid.dk <br />
                 +45 2476 9512 <br />
                 <p><a href="https://marinefluid.dk/">www.marinefluid.dk</a></p> <br />
-                Contact us for more information!
               </p>
             </div>
           </div>
@@ -264,10 +263,33 @@ const App: React.FC = () => {
               ${(Math.floor((CO2_Tons_F*90)/2)).toLocaleString('en-US')} < br />
               {(Math.floor(Liters + Liters_E + Liters_F + Liters_P)).toLocaleString('en-US')} L
               </td>
-            </tr>
+              </tr>
+          </tbody>
+        </table>
+        <table className={`${styles.centerTable} ${styles.ROI}`}>
+          <tbody>
+            <tr className={styles.total}>
+              <th>
+                SEA-Mate system ROI: <br />
+                SEA-Mate system ROI turnkey solution: <br />
+              </th>
+              <td>
+              {(Math.floor((50000/(USD + USD_E + USD_F + USD_P+(CO2_Tons_F*90)/2))*365))} days<br />
+              {(Math.floor((90000/(USD + USD_E + USD_F + USD_P+(CO2_Tons_F*90)/2))*365))} days<br />
+              </td>
+              </tr>
           </tbody>
         </table>
       </main>
+      <div className={styles.image}>
+          <Image
+            src="/blend1.png"
+            width={200}
+            height={760}
+            alt='Screenshots of the dashboard project showing desktop version'
+          />
+            <h1></h1>
+          </div>
       <aside className={styles.aside}>
         <hr className={styles.hr} />
         <b>Terms & Conditions</b>
@@ -289,7 +311,7 @@ const App: React.FC = () => {
           Any information provided by you after login, including but not limited to personal data, project details, and any other content, is treated as strictly confidential. We commit to not storing, saving, or sharing this information with any third parties. This data will only be used as necessary to provide our services and will be protected under our privacy policy.
           3. Limitation of Liability
           In no event shall Marine Fluid Technology ApS, nor any of its officers, directors, and employees, be held liable for anything arising out of or in any way connected with your use of this Website whether such liability is under contract. Marine Fluid Technology ApS, including its officers, directors, and employees shall not be held liable for any indirect, consequential, or special liability arising out of or in any way related to your use of this Website.
-          4. Uncertanties
+          4. Uncertanties and approximations
           Remember this is only an estimate, and might not be 100% accurate.
         </p>
       </aside>

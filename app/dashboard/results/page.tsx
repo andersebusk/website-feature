@@ -183,7 +183,7 @@ const Page = () => {
 
   return (
     <form className="space-y-3" onSubmit={handleDownloadImage} >
-      <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
+      <div className="flex-1 w-2/3 rounded-lg bg-gray-50 px-4 py-3">
         <div>
           <h1 className={`${lusitana.className} mb-3 text-2xl`}>
             <strong>Results</strong> <br /> <br />

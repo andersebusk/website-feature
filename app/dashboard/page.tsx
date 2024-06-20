@@ -5,6 +5,8 @@ import { UserIcon, CogIcon, BeakerIcon, ArrowRightIcon, CalendarIcon, ChartBarIc
 import { Button } from '../ui/button';
 import { lusitana } from '@/app/ui/fonts';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import styles from '@/app/ui/blend.module.css'
 
 export default function SubmissionForm() {
 
@@ -149,7 +151,7 @@ export default function SubmissionForm() {
 
   return (
     <form className="space-y-3" onSubmit={handleSubmit}>
-      <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
+      <div className="flex-1 w-1/2 rounded-lg bg-gray-50 px-4 py-3">
         <h1 className={`${lusitana.className} mb-3 text-2xl`}>
           <strong>Information about your vessel (Step 1/3)</strong> <br /> <br />
           The following information won&apos;t be stored or shared with anyone. <br /> <br />
@@ -162,7 +164,7 @@ export default function SubmissionForm() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="vessel_name"
                 type="text"
                 name="vessel_name"
@@ -216,7 +218,7 @@ export default function SubmissionForm() {
           </label>
           <div className="relative">
             <input
-              className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+              className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
               id="fuel_oil_sulfur"
               name="fuel_oil_sulfur"
               ref={fuelOilSulfurRef}
@@ -232,7 +234,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="ME_type"
                   type="text"
                   name="ME_type"
@@ -251,7 +253,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="ME_power"
                   type="number"
                   step="0.01"
@@ -275,7 +277,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="oil_load"
                   type="number"
                   step="0.01"
@@ -299,7 +301,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="annual_days_sailing"
                   type="number"
                   step="0.01"
@@ -325,7 +327,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="feedrate"
                   type="number"
                   step="0.01"
@@ -350,7 +352,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="Onboard_cylinder_oil"
                   type="number"
                   step="0.01"
@@ -371,7 +373,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/4 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="com_oil_price"
                   type="number"
                   step="0.01"
@@ -391,7 +393,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/4 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="ME_oil_price"
                   type="number"
                   step="0.01"
@@ -431,7 +433,7 @@ export default function SubmissionForm() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="BN_value"
                 type="number"
                 step="0.01"
@@ -474,7 +476,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="high_bn_oil"
                   type="number"
                   step="0.01"
@@ -493,7 +495,7 @@ export default function SubmissionForm() {
               </label>
               <div className="relative">
                 <input
-                  className="peer block w-1/4 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  className="peer block w-2/4 rounded-md border border-gray-200 py/[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                   id="high_bn_oil_price"
                   type="number"
                   step="0.01"
@@ -512,6 +514,15 @@ export default function SubmissionForm() {
           <div className="flex h-8 items-end space-x-1">
             {/* Add form errors here */}
           </div>
+          <div className={styles.blendimagedash}>
+          <Image
+            src="/blend1.png"
+            width={400}
+            height={760}
+            alt='Screenshots of the dashboard project showing desktop version'
+          />
+            <h1></h1>
+          </div>
         </div>
       </div>
       </div>
@@ -525,7 +536,7 @@ interface Submission {
 
 function SubmitButton({ onClick }: Submission) {
   return (
-    <Button className="mt-4 w-1/6" type="submit" onClick={onClick}>
+    <Button className="mt-4 w-2/6" type="submit" onClick={onClick}>
       Next <ArrowRightIcon className="ml-auto h-4 w-4 text-gray-50" />
     </Button>
   );

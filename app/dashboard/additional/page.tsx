@@ -6,6 +6,8 @@ import { Button } from '../../ui/button'; // Adjust the import according to your
 import { useRouter } from 'next/navigation';
 import { BackButton } from '../../ui/backbutton';
 import { inter, lusitana } from '@/app/ui/fonts';
+import Image from 'next/image';
+import styles from '@/app/ui/blend.module.css';
 
 export default function SubmissionFormAdd() {
   const fuelPriceRef = useRef<HTMLInputElement>(null);
@@ -90,7 +92,7 @@ export default function SubmissionFormAdd() {
 
   return (
 <form className="space-y-3" onSubmit={handleSubmit}>
-      <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
+      <div className="flex-1 w-1/2 rounded-lg bg-gray-50 px-4 py-3">
         <h1 className={`${lusitana.className} mb-3 text-2xl`}>
           <strong>Additional information (Step 2/3)</strong> <br /> <br />
           The following information is more specific to your vessel, <br /> 
@@ -106,7 +108,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="fuel_oil_consumption"
                 type="number"
                 step="0.01"
@@ -130,7 +132,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="SFOC"
                 type="number"
                 step="0.01"
@@ -155,7 +157,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="fuel_price"
                 type="number"
                 step="0.01"
@@ -185,7 +187,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="discharged_oil"
                 type="number"
                 step="0.01"
@@ -210,7 +212,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="discharge_interval"
                 type="number"
                 step="0.01"
@@ -234,7 +236,7 @@ export default function SubmissionFormAdd() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-1/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="approx_cost_purifier_annually_spares"
                 type="number"
                 step="0.01"
@@ -250,12 +252,21 @@ export default function SubmissionFormAdd() {
           </div>
 
         <SubmitButton />
-        <BackButton className="mt-4 w-1/6" type="submit" onClick={handleBack}>
+        <BackButton className="mt-4 w-2/6" type="submit" onClick={handleBack}>
         Back <ArrowRightIcon className="ml-auto h-4 w-4 text-gray-50" />
         </BackButton>
         <div className="flex h-8 items-end space-x-1">
           {/* Add form errors here */}
         </div>
+        <div className={styles.blendimageadd}>
+          <Image
+            src="/blend1.png"
+            width={400}
+            height={760}
+            alt='Screenshots of the dashboard project showing desktop version'
+          />
+            <h1></h1>
+          </div>
       </div>
       </div>
     </form>
@@ -268,7 +279,7 @@ interface Submission {
 
 function SubmitButton({ onClick }: Submission) {
   return (
-    <Button className="mt-4 w-1/6" type="submit" onClick={onClick}>
+    <Button className="mt-4 w-2/6" type="submit" onClick={onClick}>
       Next <ArrowRightIcon className="ml-auto h-4 w-4 text-gray-50" />
     </Button>
   );

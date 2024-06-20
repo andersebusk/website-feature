@@ -1,5 +1,6 @@
 
 .container {
+  position: relative;
   width: 230mm; /* Width of A4 paper */
   height: 280mm; /* Height of A4 paper */
   margin: 0 auto; /* Center the container horizontally */
@@ -42,7 +43,7 @@
   }
   
   .header{
-    height:8cm;
+    height:7cm;
     padding:0 1.5cm;
     background-color:var(--header-bg-color);
   }
@@ -68,6 +69,12 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
+  }
+
+  header .dashboard {
+    display: flex;
+    align-items: flex-start; 
+    justify-content: flex-start;
   }
   
   header .logoAndName svg{
@@ -130,7 +137,7 @@
   .main table thead th:nth-of-type(2),
   .main table thead th:nth-of-type(3),
   .main table thead th:last-of-type{
-    width:2cm;
+    width:2.2cm;
   }
   
   .main table tbody td{
@@ -155,7 +162,7 @@
   
   main table.summary tr.total{
     font-size:12pt;
-    font-weight:bold;
+    /*font-weight:bold;*/
     background-color:var(--footer-bg-color);
   }
   
@@ -168,6 +175,25 @@
     padding:2mm 2cm 4mm 0%;
     border-bottom:0;
   }
+  main table.ROI{
+    width:calc(50% + 2cm);
+    margin-left:10 mm;
+    margin-top: 0.5cm;
+  }
+  main table.ROI tr.total{
+    font-size:12pt;
+    /*font-weight:bold;*/
+    background-color:var(--header-bg-color);
+  }
+  main table.ROI th{
+    padding:2mm 0 4mm 1cm;
+    border-bottom:0;
+  }
+  main table.ROI td{
+    padding:2mm 2cm 4mm 0%;
+    border-bottom:0;
+  }
+
   
 
   .aside{
@@ -196,7 +222,7 @@
     justify-content:space-between;
     align-items:center;
     text-align: center;
-    height:3cm;
+    height:2.3cm;
     padding:0 2cm;
     color : var(--footer-color);
     background-color:var(--highlight-color);
@@ -210,3 +236,11 @@
   .contact {
     margin-right: 2.5cm; /* Adjust margin-left as needed */
   }
+
+  .image {
+    position: absolute;
+    bottom: 200px;
+    right: 100px;
+    max-width: 130px; /* Juster billedstørrelse efter behov */
+    height: auto;
+}

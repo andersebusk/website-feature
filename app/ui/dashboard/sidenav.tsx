@@ -1,6 +1,6 @@
 'use client';
 import NavLinks from '@/app/ui/dashboard/nav-links';
-import LoginPageLogo from '@/app/ui/loginlogo';
+import DashboardPageLogo from '@/app/ui/dashboardlogo';
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/navigation';
 
@@ -19,10 +19,10 @@ export default function SideNav() {
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-2" style={{ width: '300px' }}>
       <form
-        className="mb-2 flex h-20 items-end justify-start rounded-md bg-customColor p-4 md:h-44"
+        className="mb-2 flex h-20 items-end justify-start rounded-md bg-customColor p-4 md:h-48"
       >
         <div className="w-50 text-white md:w-50">
-          <LoginPageLogo />
+          <DashboardPageLogo />
         </div>
       </form>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
