@@ -281,14 +281,17 @@ const App: React.FC = () => {
           </tbody>
         </table>
       </main>
-      <div className={styles.image}>
-          <Image
-            src="/blend1.png"
-            width={200}
-            height={760}
-            alt='Screenshots of the dashboard project showing desktop version'
-          />
-            <h1></h1>
+        <div className={styles.headerSection}>
+          <div className={styles.logoAndName}>
+            <div className={styles.image}>
+            <Image
+                  src="/blend1.png"
+                  width={200}
+                  height={760}
+                  alt='Screenshots of the dashboard project showing desktop version'
+                />
+              </div>
+            </div>
           </div>
       <aside className={styles.aside}>
         <hr className={styles.hr} />
