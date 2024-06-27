@@ -1,11 +1,11 @@
 "use client";
 import React, { useRef, useEffect } from 'react';
 import { CurrencyDollarIcon } from '@heroicons/react/20/solid';
-import { CalendarIcon, ChartBarIcon, BeakerIcon, ArrowRightIcon, UserIcon } from '@heroicons/react/24/outline';
+import {  BeakerIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { Button } from '../../ui/button'; // Adjust the import according to your project's structure
 import { useRouter } from 'next/navigation';
 import { BackButton } from '../../ui/backbutton';
-import { inter, lusitana } from '@/app/ui/fonts';
+import { lusitana } from '@/app/ui/fonts';
 import Image from 'next/image';
 import styles from '@/app/ui/blend.module.css';
 

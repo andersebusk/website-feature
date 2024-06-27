@@ -4,7 +4,6 @@ import {AtSymbolIcon, KeyIcon, ExclamationCircleIcon, HomeIcon, PhoneIcon, Magni
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from './button';
 import 'react-phone-input-2/lib/style.css'
-import PhoneInput from 'react-phone-input-2'
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useRouter } from 'next/navigation';

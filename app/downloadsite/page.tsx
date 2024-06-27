@@ -8,6 +8,7 @@ import html2canvas from 'html2canvas';
 import { Button } from '@/app/ui/button';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import jsPDF from 'jspdf';
+import { useRouter } from 'next/navigation';
 
 <div className={styles.headerSection} />;
 <div className={styles.issuedTo} />;
@@ -27,8 +28,10 @@ const App: React.FC = () => {
   const [savingsDataF, setSavingsDataF] = useState(null);
   const [savingsDataP, setSavingsDataP] = useState(null);
   const [formData, setFormData] = useState(null);
+  const router = useRouter();
 
   const handleDownloadImage = () => {
+    router.push('/downloadsite');
     const container = document.getElementById('captureContainer');
     const savedFormData = JSON.parse(sessionStorage.getItem('formData') || '{}');
 
