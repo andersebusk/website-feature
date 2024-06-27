@@ -25,11 +25,10 @@ const usePurifierSavingsCalculation = () => {
 
         const Savings_CO2_ton: number = liter_lost_year * 3/1000
 
-        const Savings_L: number = annual_lost_lube
 
-        setSavings({USD_P: Purifier_cost_year, Liters_P: Savings_L, CO2_Tons_P: Savings_CO2_ton});
+        setSavings({USD_P: Purifier_cost_year, Liters_P: liter_lost_year, CO2_Tons_P: Savings_CO2_ton});
     
-        return [Purifier_cost_year, Savings_L, Savings_CO2_ton];
+        return [Purifier_cost_year, liter_lost_year, Savings_CO2_ton];
     }
 
     return { savingsP, purifier_besparelser, setSavings};

@@ -3,9 +3,8 @@ import { useState } from 'react';
 const useEnergySavingsCalculation = () => {
     const [savingsE, setSavings] = useState({USD_E: 0, Liters_E: 0, CO2_Tons_E: 0});
 
-    function energy_besparelser(Days_sailing: number, fuel_USD_ton: number
+    function energy_besparelser(Days_sailing: number, fuel_USD_ton: number, system_oil_flow: number
     ): number[] {
-        const system_oil_flow: number = 4500
         const purifier_electric: number = 4.5
         const delta_inlet: number = 58
         const c_vaLue: number = 2.0

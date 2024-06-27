@@ -65,6 +65,7 @@ export default function SubmissionForm() {
   const onBoardRef = useRef<HTMLInputElement>(null);
   const highBNOilRef = useRef<HTMLInputElement>(null);
   const highBNOilPriceRef = useRef<HTMLInputElement>(null);
+  let systemOilFlow: string = "0";
   const router = useRouter();
 
   const saveFieldToSessionStorage = (field: string, value: any) => {
@@ -96,8 +97,17 @@ export default function SubmissionForm() {
   }
   if (highBNOilPriceInput && (highBNOilPriceInput.value.trim() === '' || isNaN(parseFloat(highBNOilPriceInput.value)))) {
     highBNOilPriceInput.value = '3.5';
-  }
+  } 
   
+  const power = ME_powerRef.current ? parseFloat(ME_powerRef.current.value) : 0;
+  
+  if (power <= 10000) {
+    systemOilFlow = "2000";
+  } else if (power <= 20000) {
+    systemOilFlow = "4000";
+  } else {
+    systemOilFlow = "6000";
+  }
     if (
       vesselNameRef.current &&
       ME_powerRef.current &&
@@ -111,7 +121,8 @@ export default function SubmissionForm() {
       MainEngineTypeRef.current &&
       onBoardRef.current &&
       highBNOilRef.current &&
-      highBNOilPriceRef.current
+      highBNOilPriceRef.current &&
+      systemOilFlow
     ) {
       const formData = {
         vessel_name: vesselNameRef.current.value,
@@ -127,7 +138,8 @@ export default function SubmissionForm() {
         scrubber: hasScrubber,
         onboard_bn: onBoardRef.current.value,
         highBN: highBNOilRef.current.value,
-        highBNPrice: highBNOilPriceRef.current.value
+        highBNPrice: highBNOilPriceRef.current.value,
+        systemOilFlow: systemOilFlow
       };
       console.log('Form data to be saved:', formData);
       sessionStorage.setItem('formData', JSON.stringify(formData));
@@ -157,7 +169,7 @@ export default function SubmissionForm() {
           if (onBoardRef.current) onBoardRef.current.value = savedFormData.onboard_bn;
           if (highBNOilRef.current) highBNOilRef.current.value = savedFormData.highBN;
           if (highBNOilPriceRef.current) highBNOilPriceRef.current.value = savedFormData.highBNPrice;
-        }
+          if (systemOilFlow) systemOilFlow = savedFormData.system_oil_flow; }
       } catch (error) {
         console.error('Error parsing form data from session storage', error);
       }

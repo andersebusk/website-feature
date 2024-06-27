@@ -75,7 +75,8 @@ const Page = () => {
 
         energy_besparelser(
             savedFormData.annual_days_sailing, 
-            savedFormDataAdd.fuel_price
+            savedFormDataAdd.fuel_price,
+            savedFormData.systemOilFlow
         );
 
         fuel_besparelser(
@@ -131,7 +132,7 @@ const Page = () => {
     maintenance_cost = 'N/A',
     discharged_oil = 'N/A',
     discharge_interval = 'N/A',
-    fuel_oil_consumption = 'N/A'
+    fuel_oil_consumption = 'N/A',
 
   } = formDataAdd as any;
 
