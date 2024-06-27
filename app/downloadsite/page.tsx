@@ -42,7 +42,7 @@ const App: React.FC = () => {
         const heightPx = mmToPx(298);
 
         // Use html2canvas to draw the container content onto the canvas
-        html2canvas(container, { width: widthPx, height: heightPx, scale: 5 }).then((canvas) => {
+        html2canvas(container, { width: widthPx, height: heightPx, scale: 3 }).then((canvas) => {
             // Convert canvas to image data URL
             const imageData = canvas.toDataURL('image/png');
 
