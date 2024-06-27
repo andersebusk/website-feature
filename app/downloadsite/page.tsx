@@ -303,8 +303,9 @@ const App: React.FC = () => {
         <hr className={styles.hr} />
         <b>Elaboration of calculations</b>
         <p>
-        Centrifuge savings are calculated under the assumption that the filters completely replace the ship's purifier. This implies potential savings if the purifier is entirely unused, with the filters performing its function.
-    Energy savings specifically relate to replacing the lube oil centrifuge (Purifier) with filters. Assumptions are made to facilitate these calculations, based on parameters that are generally consistent across many vessels. These include the system oil flow estimated at 4500 kg/hr and the power consumption of the purifier's electric motor at 4.5 kW. Additionally, it is assumed that 0.2 kg of fuel oil is required to generate 1 kWh (i.e., 0.2 kg/kWh).<br/>
+        Centrifuge savings are calculated under the assumption that the filters completely replace the ship&apos;s
+        purifier. This implies potential savings if the purifier is entirely unused, with the filters performing its function.
+    Energy savings specifically relate to replacing the lube oil centrifuge (Purifier) with filters. Assumptions are made to facilitate these calculations, based on parameters that are generally consistent across many vessels. These include the system oil flow estimated at 4500 kg/hr and the power consumption of the purifier&apos;s electric motor at 4.5 kW. Additionally, it is assumed that 0.2 kg of fuel oil is required to generate 1 kWh (i.e., 0.2 kg/kWh).<br/>
 
     Fuel savings are partially derived from achieving a cleaner oil sump, thereby reducing friction on the crankshaft. It is estimated that this improvement could lead to up to a 0.8% reduction in resistance during operation.
 
