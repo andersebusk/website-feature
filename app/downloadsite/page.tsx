@@ -7,6 +7,7 @@ import { useRef } from 'react';
 import html2canvas from 'html2canvas';
 import { Button } from '@/app/ui/button';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import jsPDF from 'jspdf';
 
 <div className={styles.headerSection} />;
 <div className={styles.issuedTo} />;
@@ -35,26 +36,25 @@ const App: React.FC = () => {
         // Convert mm to pixels (1mm = 3.779527559 pixels)
         const mmToPx = (mm: number) => mm * 3.779527559;
         const widthPx = mmToPx(230);
-        const heightPx = mmToPx(280);
-
-        // Create an off-screen canvas with the desired dimensions
-        const canvas = document.createElement('canvas');
-        canvas.width = widthPx;
-        canvas.height = heightPx;
+        const heightPx = mmToPx(298);
 
         // Use html2canvas to draw the container content onto the canvas
         html2canvas(container, { width: widthPx, height: heightPx, scale: 1 }).then((canvas) => {
             // Convert canvas to image data URL
             const imageData = canvas.toDataURL('image/png');
 
-            // Create a temporary anchor element to download the image
-            const link = document.createElement('a');
-            link.href = imageData;
-            link.download = `SEA-Mate Value Calculation - ${savedFormData.vessel_name}.png`; // Filename for the downloaded image
-            link.click();
+            // Create a PDF document using jsPDF
+            const pdf = new jsPDF('p', 'mm', [290, 230]); // Set PDF size based on your container dimensions
+
+            // Add the image to the PDF
+            pdf.addImage(imageData, 'PNG', 0, 0, 230, 290);
+
+            // Download the PDF
+            pdf.save(`SEA-Mate Value Calculation - ${savedFormData.vessel_name}.pdf`);
         });
     }
 };
+
 
   useEffect(() => {
     console.log(contentRef.current);
@@ -209,16 +209,17 @@ const App: React.FC = () => {
       </header>
       <footer className={styles.footer}>
         Congratulations! You are on the path to saving the world while saving money! <br />
-        Keep up the good work!
+        Keep up the good work! <br />
+        Do not hesitate to contact us for a follow up meeting, to discuss the opportunities in greater details.
       </footer>
       <main className={styles.main}>
         <table>
           <thead>
             <tr>
               <th className={styles.spacing}>Savings for {vessel_name}:</th>
-              <th className={styles.spacing}>USD rate</th>
-              <th className={styles.spacing}>CO2 rate (tCO2e)</th>
-              <th className={styles.spacing}>Oil rate (L)</th>
+              <th className={styles.spacing}>USD/year</th>
+              <th className={styles.spacing}>CO2/year (tCO2e)</th>
+              <th className={styles.spacing}>Oil/year (L)</th>
             </tr>
           </thead>
           <tbody>
@@ -286,8 +287,8 @@ const App: React.FC = () => {
             <div className={styles.image}>
             <Image
                   src="/blend1.png"
-                  width={200}
-                  height={760}
+                  width={130}
+                  height={500}
                   alt='Screenshots of the dashboard project showing desktop version'
                 />
               </div>

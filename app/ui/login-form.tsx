@@ -194,7 +194,7 @@ export default function LoginForm() {
           Effective Date: [17/05/2024] <br /><br />
 
           Welcome to MFT&apos;s oils Calculator. <br />
-          By accessing or using our services, you agree to comply with and be bound by these Terms and Conditions. Please read them carefully.
+          By accessing or using our services, you agree to comply with and be bound by these Terms and Conditions. Please read them carefully. < br /><br />
 
           1. Acceptance of Terms <br /><br />
           By accessing our services, you accept and agree to be bound by these Terms and Conditions. If you do not agree with these terms, you are prohibited from using or accessing this site.<br /><br />
@@ -232,9 +232,9 @@ export default function LoginForm() {
           8. Contact Information<br /><br />
           For any questions or concerns about these Terms and Conditions, please contact us at:<br /><br />
 
-          Email: mftservice@marinefluid.dk
+          Email: mftservice@marinefluid.dk <br />
           Address: Strandvejen 60, 5th (Regus), <br />
-          2900 Hellerup, Denmark
+          2900 Hellerup, Denmark <br /><br />
           By using our services, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.</p> }
         <button onClick={() => setModalIsOpen(false)}>Close</button>
       </Modal>

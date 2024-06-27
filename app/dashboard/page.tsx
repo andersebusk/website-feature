@@ -86,12 +86,16 @@ export default function SubmissionForm() {
 
     const comInput = commercial_oil_priceRef.current;
     const feedrateInput = feedrateRef.current;
+    const highBNOilPriceInput = highBNOilPriceRef.current;
 
   if (comInput && (comInput.value.trim() === '' || isNaN(parseFloat(comInput.value)))) {
     comInput.value = '2.0';
   }
   if (feedrateInput && (feedrateInput.value.trim() === '' || isNaN(parseFloat(feedrateInput.value)))) {
     feedrateInput.value = '0.95';
+  }
+  if (highBNOilPriceInput && (highBNOilPriceInput.value.trim() === '' || isNaN(parseFloat(highBNOilPriceInput.value)))) {
+    highBNOilPriceInput.value = '3.5';
   }
   
     if (
@@ -165,7 +169,7 @@ export default function SubmissionForm() {
       <div className="flex-1 w-1/2 rounded-lg bg-gray-50 px-4 py-3">
         <h1 className={`${lusitana.className} mb-3 text-2xl`}>
           <strong>Information about your vessel (Step 1/3)</strong> <br /> <br />
-          The following information won&apos;t be stored or shared with anyone. <br /> <br />
+          The following information will not be stored or shared with anyone. <br /> <br />
           Please enter this information about your vessel:
         </h1>
         <div className="w-full">
@@ -212,7 +216,7 @@ export default function SubmissionForm() {
               />
               {showTooltip && (
                 <div className="absolute z-10 bg-white shadow-md p-2 rounded-md mt-1 text-sm mb-3 mt-5 block text-sm font-medium text-gray-900"
-                     style={{ width: '450px', height: '80px', padding: '10px' }}>
+                     style={{ width: '400px', height: '80px', padding: '10px' }}>
                   Check this box if your vessel has a scrubber. <br />
                   If yes: Fuel oil Sulfur will be calculated above 0,5%S  <br />
                   If no: Fuel oil Sulfur will be calculated between 0- 0,5%S
@@ -239,24 +243,48 @@ export default function SubmissionForm() {
             <BeakerIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
           </div>
         </div>
-          <div className="mt-4">
-              <label className="mb-3 mt-5 block text-xs font-medium text-gray-900" htmlFor="ME_type">
-                Main engine type
-              </label>
-              <div className="relative">
-                <input
-                  className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
-                  id="ME_type"
-                  type="text"
-                  name="ME_type"
-                  ref={MainEngineTypeRef}
-                  placeholder="*Enter the type of your main engine"
-                  required
-                  onBlur={() => handleInputChange(MainEngineTypeRef, 'ME_type')}
-                />
-                <CogIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+        <div className="mt-4">
+                <label
+                  className="mb-3 mt-5 block text-xs font-medium text-gray-900 flex items-center"
+                  htmlFor="ME_type"
+                >
+                  Main engine type
+                  <div
+                    className="relative ml-2"
+                    onMouseEnter={handleBNtipHover}
+                    onMouseLeave={handleBNtipLeave}
+                    onClick={() => setShowTooltipBN(!showTooltipBN)}
+                  >
+                    <InformationCircleIcon
+                      className="h-5 w-5 text-gray-500 cursor-pointer"
+                      aria-hidden="true"
+                    />
+                    {showTooltipBN && (
+                      <div
+                        className="absolute z-10 bg-white shadow-md p-2 rounded-md mt-1 text-sm"
+                        style={{ width: '300px', height: '55px', padding: '10px' }}
+                      >
+                        In this field we ask for the type of engine. <br />
+                        As an example it could be 6S50ME-B.
+                        <br />
+                      </div>
+                    )}
+                  </div>
+                </label>
+                <div className="relative">
+                  <input
+                    className="peer block w-2/4 rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                    id="ME_type"
+                    type="text"
+                    name="ME_type"
+                    ref={MainEngineTypeRef}
+                    placeholder="*Enter the type of your main engine"
+                    required
+                    onBlur={() => handleInputChange(MainEngineTypeRef, 'ME_type')}
+                  />
+                  <CogIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                </div>
               </div>
-            </div>
           <div className="mt-4">
             <div>
               <label className="mb-3 mt-5 block text-xs font-medium text-gray-900" htmlFor="ME_power">
@@ -509,8 +537,8 @@ export default function SubmissionForm() {
                   step="0.01"
                   name="high_bn_oil_price"
                   ref={highBNOilPriceRef}
-                  placeholder="*"
-                  required
+                  placeholder="*Estimate if left empty: 3.5 USD/L"
+                  
                   onBlur={() => handleInputChange(highBNOilPriceRef, 'highBNPrice')}
                 />
                 <span style={{ right: '1174px', top: '16px' }} className="pointer-events-none absolute top-1/2 h/[18px] w/[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"></span>
