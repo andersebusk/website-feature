@@ -9,6 +9,8 @@ import useEnergySavingsCalculation from '../calculators/energycalc';
 import useFuelSavingsCalculation from '../calculators/fuelcalcl';
 import usePurifierSavingsCalculation from '../calculators/purifercalc';
 import { BackButton } from '@/app/ui/backbutton';
+import styles from '@/app/ui/dashboard/results.module.css'
+import Modal from 'react-modal';
 
 
 
@@ -25,14 +27,14 @@ const Page = () => {
   const previousSavingsE = useRef(savingsE);
   const previousSavingsF = useRef(savingsF);
   const previousSavingsP = useRef(savingsP);
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const handleTooltipHover = () => {
-    setShowTooltip(true);
+  const openModal = () => {
+    setModalIsOpen(true);
   };
 
-  const handleTooltipLeave = () => {
-    setShowTooltip(false);
+  const closeModal = () => {
+    setModalIsOpen(false);
   };
   
 
@@ -191,69 +193,171 @@ const Page = () => {
             We have all the information we need. <br />
             Please check if the information is correct and click the button below to generate your savings overview.
           </h1>
-        </div>
-
-        <div>
-          <strong>Your information:</strong>
-          <p>Company: {company}</p>
-          <p>Email: {email}</p>
-          <p>Phone: {phone}</p>
-          <p>Country: {country}</p>
-          <br />
-          <strong>Vessel information:</strong>
-          <p>Vessel name: {vessel_name}</p>
-          <p>Scrubber fitted: {scrubber ? 'Yes' : 'No'}</p>
-          <p>Fuel oil sulfur (S%): {fuel_oil_sulfur}</p>
-          <p>Main engine type: {MainEngineType}</p>
-          <p>Main engine power  output (kW): {ME_power}</p>
-          <p>Average main engine Load (%): {oil_load}</p>
-          <p>Annual days sailing: {annual_days_sailing}</p>
-          <p>Cylinder oil feed rate (g/kWh): {feedrate}</p>
-          <p>Onboard cylinder oil BN: {onboard_bn}</p>
-          <p>Cost of primary cylinder oil (USD/L): {commercial_oil_price}</p>
-          <p>Cost of main engine system oil (USD/L): {ME_oil_price}</p>
-          <p>Requested cylinder oil BN from BOB System: {BN_value}</p>
-          <p>High BN oil for blending: {highBN}</p>
-          <p>Cost of high BN oil (USD/L): {highBNPrice}</p>
-          <br />
-          <strong>Additional information:</strong>
-          <br />
-          <strong>Fuel information</strong>
-          <p>Fuel oil consumption per day (MT/day): {fuel_oil_consumption}</p>
-          <p>Specific fuel oil consumption (g/kWh): {SFOC_value}</p>
-          <p>Cost of fuel oil (USD/MT): {fuel_price}</p>
-          <br />
-          <strong>Main engine lube oil centrifuge</strong>
-          <p>Amount of system oil discharged at every de-sludging (specific to your purifier) (L): {discharged_oil}</p>
-          <p>Discharge interval from separator (h): {discharge_interval}</p>
-          <p>Approximate cost of purifier maintenance annually (USD): {maintenance_cost}</p>
+          <div className={styles.infocontainer}>
+            <table>
+              <tbody>
+                <tr>
+                  <td><strong>Your information:</strong></td>
+                </tr>
+                <tr>
+                  <td>Company:</td>
+                  <td>{company}</td>
+                </tr>
+                <tr>
+                  <td>Email:</td>
+                  <td>{email}</td>
+                </tr>
+                <tr>
+                  <td>Phone:</td>
+                  <td>{phone}</td>
+                </tr>
+                <tr>
+                  <td>Country:</td>
+                  <td>{country}</td>
+                </tr>
+                <tr>
+                  <td colSpan={2}><br /></td>
+                </tr>
+                <tr>
+                  <td ><strong>Vessel information:</strong></td>
+                </tr>
+                <tr>
+                  <td>Vessel name:</td>
+                  <td>{vessel_name}</td>
+                </tr>
+                <tr>
+                  <td>Scrubber fitted:</td>
+                  <td>{scrubber ? 'Yes' : 'No'}</td>
+                </tr>
+                <tr>
+                  <td>Fuel oil sulfur (S%):</td>
+                  <td>{fuel_oil_sulfur}</td>
+                </tr>
+                <tr>
+                  <td>Main engine type:</td>
+                  <td>{MainEngineType}</td>
+                </tr>
+                <tr>
+                  <td>Main engine power output (kW):</td>
+                  <td>{parseInt(ME_power)}</td>
+                </tr>
+                <tr>
+                  <td>Average main engine Load (%):</td>
+                  <td>{parseFloat(oil_load)}</td>
+                </tr>
+                <tr>
+                  <td>Annual days sailing:</td>
+                  <td>{parseInt(annual_days_sailing)}</td>
+                </tr>
+                <tr>
+                  <td>Cylinder oil feed rate (g/kWh):</td>
+                  <td>{parseFloat(feedrate)}</td>
+                </tr>
+                <tr>
+                  <td>Onboard cylinder oil BN:</td>
+                  <td>{parseInt(onboard_bn)}</td>
+                </tr>
+                <tr>
+                  <td>Cost of primary cylinder oil (USD/L):</td>
+                  <td>{parseFloat(commercial_oil_price)}</td>
+                </tr>
+                <tr>
+                  <td>Cost of main engine system oil (USD/L):</td>
+                  <td>{parseFloat(ME_oil_price)}</td>
+                </tr>
+                <tr>
+                  <td>Requested cylinder oil BN from BOB System:</td>
+                  <td>{parseInt(BN_value)}</td>
+                </tr>
+                <tr>
+                  <td>High BN oil for blending:</td>
+                  <td>{parseInt(highBN)}</td>
+                </tr>
+                <tr>
+                  <td>Cost of high BN oil (USD/L):</td>
+                  <td>{parseFloat(highBNPrice)}</td>
+                </tr>
+                <tr>
+                  <td colSpan={2}><br /></td>
+                </tr>
+                <tr>
+                  <td><strong>Fuel information:</strong></td>
+                </tr>
+                <tr>
+                  <td>Fuel oil consumption per day (MT/day):</td>
+                  <td>{parseFloat(fuel_oil_consumption)}</td>
+                </tr>
+                <tr>
+                  <td>Specific fuel oil consumption (g/kWh):</td>
+                  <td>{parseFloat(SFOC_value)}</td>
+                </tr>
+                <tr>
+                  <td>Cost of fuel oil (USD/MT):</td>
+                  <td>{parseFloat(fuel_price)}</td>
+                </tr>
+                <tr>
+                  <td colSpan={2}><br /></td>
+                </tr>
+                <tr>
+                  <td><strong>Main engine lube oil centrifuge:</strong></td>
+                </tr>
+                <tr>
+                  <td>Amount of system oil discharged at every de-sludging (L):</td>
+                  <td>{parseFloat(discharged_oil)}</td>
+                </tr>
+                <tr>
+                  <td>Discharge interval from separator (h):</td>
+                  <td>{parseInt(discharge_interval)}</td>
+                </tr>
+                <tr>
+                  <td>Approximate cost of purifier maintenance annually (USD):</td>
+                  <td>{parseFloat(maintenance_cost)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <div className="w-full">
-          <div className="flex items-center mb-3 mt-6">
-            <label htmlFor="NB" className="mb-3 mt-3 block text-sm font-medium text-gray-900">
-              NB
-            </label>
-            <div
-              className="relative ml-2"
-              onMouseEnter={handleTooltipHover}
-              onMouseLeave={handleTooltipLeave}
-              onClick={() => setShowTooltip(!showTooltip)}
-            >
-              <InformationCircleIcon
-                className="h-5 w-5 text-gray-500 cursor-pointer"
-                aria-hidden="true"
-              />
-              {showTooltip && (
-                <div className="absolute z-10 bg-white shadow-md p-2 rounded-md mt-1 text-sm mb-3 mt-5 block text-sm font-medium text-gray-900"
-                     style={{ width: '450px', height: '80px', padding: '10px' }}>
-                  Our calculations are based on the assumption that the cylinder oil feed rate will be reduced to 0.8 after the installation of BOB.
-                  Additionally, we assume that 1 ton of oil equals 1000 liters.
-                </div>
-              )}
+      <div className="flex items-center mb-3 mt-6">
+        <label htmlFor="NB" className="mb-3 mt-3 block text-sm font-medium text-gray-900">
+          NB
+        </label>
+        <div className="relative ml-2">
+          <InformationCircleIcon
+            className="h-5 w-5 text-gray-500 cursor-pointer"
+            aria-hidden="true"
+            onClick={openModal}
+          />
+          <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={{
+            content: {
+              top: '50%',
+              left: '50%',
+              right: 'auto',
+              bottom: 'auto',
+              marginRight: '-50%',
+              transform: 'translate(-50%, -50%)',
+              width: '50%', // Juster denne værdi for at ændre bredden
+              padding: '20px', // Tilføjet padding for bedre udseende
+            },
+          }}
+          >
+            <h2>Information about calculations:</h2>
+            <p>
+            Fuel savings are partially derived from achieving a cleaner oil sump, thereby reducing friction on the crankshaft. It is estimated that this improvement could lead to up to a 0.8% reduction in resistance during operation. <br /> <br />
+
+            These estimations are based on a series of static tests conducted at a power plant in Barbados, further details of which can be found on our website at <a href="https://marinefluid.dk/cases/barbados/">https://marinefluid.dk/cases/barbados/</a>. <br /> <br />
+
+            All savings figures are estimates, and Marine Fluid Technology disclaims any responsibility for their factual accuracy. These numbers are intended to estimate potential savings. For further inquiries or details, please do not hesitate to <a href="mailto:mftservice@marinefluid.dkk">contact us</a>, and we will be glad to assist with any information required. <br /> <br />
+            </p>
+            <button onClick={closeModal}>Close</button>
+          </Modal>
+          </div>
             </div>
           </div>
-        </div>
-        </div>
-        <div>
+          </div>
+          <div>
           <GenerateSavings />
           <BackButton className="mt-4 w-1/6" type="submit" onClick={handleBackAdditional}>
         Go to Additional <ArrowRightIcon className="ml-auto h-4 w-4 text-gray-50" />

@@ -39,7 +39,7 @@ const App: React.FC = () => {
         // Convert mm to pixels (1mm = 3.779527559 pixels)
         const mmToPx = (mm: number) => mm * 3.779527559;
         const widthPx = mmToPx(230);
-        const heightPx = mmToPx(298);
+        const heightPx = mmToPx(297);
 
         // Use html2canvas to draw the container content onto the canvas
         html2canvas(container, { width: widthPx, height: heightPx, scale: 3 }).then((canvas) => {
@@ -259,13 +259,15 @@ const App: React.FC = () => {
                 Total operational saving: <br />
                 Total CO2 reduction: <br />
                 EU ETS saving: <br />
-                Total oil saving:
+                Total lube oil saving: <br />
+                Total fuel oil saving:
               </th>
               <td>
               ${(Math.floor(USD + USD_E + USD_F + USD_P)).toLocaleString('en-US')} <br />
               {(Math.floor(CO2_Tons + CO2_Tons_E + CO2_Tons_F + CO2_Tons_P)).toLocaleString('en-US')} tCO2e<br />
               ${(Math.floor((CO2_Tons_F*90)/2)).toLocaleString('en-US')} < br />
-              {(Math.floor(Liters + Liters_E + Liters_F + Liters_P)).toLocaleString('en-US')} L
+              {(Math.floor(Liters)).toLocaleString('en-US')} L <br />
+              {(Math.floor(Liters_E + Liters_F + Liters_P)).toLocaleString('en-US')} L
               </td>
               </tr>
           </tbody>
@@ -299,27 +301,17 @@ const App: React.FC = () => {
           </div>
       <aside className={styles.aside}>
         <hr className={styles.hr} />
-        <b>Terms & Conditions</b>
+        <b>Elaboration of calculations</b>
         <p>
-        1. Acceptance of Terms
-          By accessing our services, you accept and agree to be bound by these Terms and Conditions. If you do not agree with these terms, you are prohibited from using or accessing this site.
+        Centrifuge savings are calculated under the assumption that the filters completely replace the ship's purifier. This implies potential savings if the purifier is entirely unused, with the filters performing its function.
+    Energy savings specifically relate to replacing the lube oil centrifuge (Purifier) with filters. Assumptions are made to facilitate these calculations, based on parameters that are generally consistent across many vessels. These include the system oil flow estimated at 4500 kg/hr and the power consumption of the purifier's electric motor at 4.5 kW. Additionally, it is assumed that 0.2 kg of fuel oil is required to generate 1 kWh (i.e., 0.2 kg/kWh).<br/>
 
-          2. Information Collection and Usage
-          2.1 Login Information
-          We collect and store certain login information when you access our services. This includes:
+    Fuel savings are partially derived from achieving a cleaner oil sump, thereby reducing friction on the crankshaft. It is estimated that this improvement could lead to up to a 0.8% reduction in resistance during operation.
 
-          Company Email
-          Company Name 
-          Phone Number 
-          Country 
-          This information is used to provide our services to you and to contact you as necessary. We do not share this information with any third parties.
+    These estimations are based on a series of static tests conducted at a power plant in Barbados, further details of which can be found on our website at <a href="https://marinefluid.dk/cases/barbados/">https://marinefluid.dk/cases/barbados/</a>.
 
-          2.2 Confidentiality of Post-Login Information 
-          Any information provided by you after login, including but not limited to personal data, project details, and any other content, is treated as strictly confidential. We commit to not storing, saving, or sharing this information with any third parties. This data will only be used as necessary to provide our services and will be protected under our privacy policy.
-          3. Limitation of Liability
-          In no event shall Marine Fluid Technology ApS, nor any of its officers, directors, and employees, be held liable for anything arising out of or in any way connected with your use of this Website whether such liability is under contract. Marine Fluid Technology ApS, including its officers, directors, and employees shall not be held liable for any indirect, consequential, or special liability arising out of or in any way related to your use of this Website.
-          4. Uncertanties and approximations
-          Remember this is only an estimate, and might not be 100% accurate.
+    All savings figures are estimates, and Marine Fluid Technology disclaims any responsibility for their factual accuracy. These numbers are intended to estimate potential savings. For further inquiries or details, please do not hesitate to <a href="mailto:contact@marinefluid.dk">contact us</a>, and we will be glad to assist with any information required.
+
         </p>
       </aside>
     </div>

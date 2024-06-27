@@ -1,0 +1,24 @@
+.infocontainer {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .infocontainer td {
+    padding: 5px;
+  }
+  
+  .infocontainer td:first-child {
+    text-align: left;
+    padding-right: 10px;
+  }
+  
+  .infocontainer td:last-child {
+    text-align: left;
+    padding-left: 10px;
+  }
+  
+  .infocontainer strong {
+    display: block;
+    margin: 10px 0;
+  }
+  

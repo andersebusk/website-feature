@@ -1,6 +1,6 @@
 'use client';
 import { lusitana } from '@/app/ui/fonts';
-import {AtSymbolIcon, KeyIcon, ExclamationCircleIcon, HomeIcon, PhoneIcon, MagnifyingGlassPlusIcon} from '@heroicons/react/24/outline';
+import {AtSymbolIcon, HomeIcon, PhoneIcon, MagnifyingGlassPlusIcon} from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from './button';
 import 'react-phone-input-2/lib/style.css'
