@@ -303,13 +303,13 @@ const App: React.FC = () => {
         <hr className={styles.hr} />
         <b>Elaboration of calculations:</b>
         <p>
-        <li>Centrifuge savings assume filters replace the ship's purifier, potentially saving fuel if the purifier remains unused.</li>
-    <li>Energy savings come from replacing the lube oil centrifuge with filters, based on typical vessel parameters.</li>
-    <li>Assumptions include system oil flow and purifier motor power consumption (0.1 kg fuel oil = 1 kWh).</li>
-    <li>Fuel savings result from a cleaner oil sump, reducing crankshaft friction and possibly lowering operational resistance by up to 0.8%.</li>
-    <li>Estimations are based on static tests at a Barbados power plant; details: <a href="https://marinefluid.dk/cases/barbados/">Marine Fluid Technology's website</a>.</li>
-    <li>All savings figures are estimates; Marine Fluid Technology disclaims accuracy. Contact <a href="mailto:contact@marinefluid.dk">contact@marinefluid.dk</a> for more information.</li>
-    <li>Fuel oil density estimate: 928 L/MT (mean value of three vessel fuel oils).</li>
+        <li>Centrifuge savings assume filters replace the ship&apos;s purifier, potentially saving fuel if the purifier remains unused.</li>
+        <li>Energy savings come from replacing the lube oil centrifuge with filters, based on typical vessel parameters.</li>
+        <li>Assumptions include system oil flow and purifier motor power consumption (0.1 kg fuel oil = 1 kWh).</li>
+        <li>Fuel savings result from a cleaner oil sump, reducing crankshaft friction and possibly lowering operational resistance by up to 0.8%.</li>
+        <li>Estimations are based on static tests at a Barbados power plant; details: <a href="https://marinefluid.dk/cases/barbados/">Marine Fluid Technology&apos;s website</a>.</li>
+        <li>All savings figures are estimates; Marine Fluid Technology disclaims accuracy. Contact <a href="mailto:contact@marinefluid.dk">contact@marinefluid.dk</a> for more information.</li>
+        <li>Fuel oil density estimate: 928 L/MT (mean value of three vessel fuel oils).</li>
 
         </p>
       </aside>
