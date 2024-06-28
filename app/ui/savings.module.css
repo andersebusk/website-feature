@@ -1,8 +1,8 @@
 
 .container {
   position: relative;
-  width: 230mm; /* Width of A4 paper */
-  height: 280mm; /* Height of A4 paper */
+  width: 210mm; /* Width of A4 paper */
+  height: 297mm; /* Height of A4 paper */
   margin: 0 auto; /* Center the container horizontally */
   padding: 0; /* Margin around the A4 paper */
   background-color: white; /* Set the background color */
@@ -72,8 +72,8 @@
   }
   .image {
     position: absolute;
-    bottom: 140px;
-    right: 640px;
+    bottom: 205px;
+    right: 570px;
     height: auto;
     display:flex;
     align-items:center;
@@ -139,7 +139,7 @@
   .main table thead th{
     padding:4mm 0 4mm 1cm;
     height:1cm;
-    width: 5cm;
+    width: 4cm;
     color:var(--highlight-color);
   }
   
@@ -224,7 +224,7 @@
   .aside{
     -prince-float: bottom;
     float: none;
-    padding:0 1.5cm .5cm 1.5cm;
+    padding:0 0.5cm .5cm 0.5cm;
     margin-top: -30px;
   }
   
@@ -248,7 +248,7 @@
     align-items:center;
     text-align: center;
     height:2.3cm;
-    padding:0 2cm;
+    padding:0 1cm;
     color : var(--footer-color);
     background-color:var(--highlight-color);
     font-size:12pt;

@@ -38,7 +38,7 @@ const App: React.FC = () => {
     if (container) {
         // Convert mm to pixels (1mm = 3.779527559 pixels)
         const mmToPx = (mm: number) => mm * 3.779527559;
-        const widthPx = mmToPx(230);
+        const widthPx = mmToPx(210);
         const heightPx = mmToPx(297);
 
         // Use html2canvas to draw the container content onto the canvas
@@ -47,10 +47,10 @@ const App: React.FC = () => {
             const imageData = canvas.toDataURL('image/png');
 
             // Create a PDF document using jsPDF
-            const pdf = new jsPDF('p', 'mm', [290, 230]); // Set PDF size based on your container dimensions
+            const pdf = new jsPDF('p', 'mm', [297, 210]); // Set PDF size based on your container dimensions
 
             // Add the image to the PDF
-            pdf.addImage(imageData, 'PNG', 0, 0, 230, 290);
+            pdf.addImage(imageData, 'PNG', 0, 0, 210, 297);
 
             // Download the PDF
             pdf.save(`SEA-Mate Value Calculation - ${savedFormData.vessel_name}.pdf`);
