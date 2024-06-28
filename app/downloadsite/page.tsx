@@ -211,7 +211,7 @@ const App: React.FC = () => {
           </div>
       </header>
       <footer className={styles.footer}>
-        Congratulations! You are on the path to saving the world while saving money! <br />
+        Congratulations! You are taking the first step towards saving both the planet and money! <br />
         Keep up the good work! <br />
         Do not hesitate to contact us for a follow up meeting, to discuss the opportunities in greater details.
       </footer>
@@ -305,13 +305,13 @@ const App: React.FC = () => {
         <p>
         Centrifuge savings are calculated under the assumption that the filters completely replace the ship&apos;s
         purifier. This implies potential savings if the purifier is entirely unused, with the filters performing its function.
-    Energy savings specifically relate to replacing the lube oil centrifuge (Purifier) with filters. Assumptions are made to facilitate these calculations, based on parameters that are generally consistent across many vessels. These include the system oil flow estimated at 4500 kg/hr and the power consumption of the purifier&apos;s electric motor at 4.5 kW. Additionally, it is assumed that 0.2 kg of fuel oil is required to generate 1 kWh (i.e., 0.2 kg/kWh).<br/>
+        Energy savings specifically relate to replacing the lube oil centrifuge (Purifier) with filters. Assumptions are made to facilitate these calculations, based on parameters that are generally consistent across many vessels. These include the an estimation of the system oil flow and the power consumption of the purifier&apos;s electric motor. Additionally, it is assumed that 0.1 kg of fuel oil is required to generate 1 kWh (i.e., 0.1 kg/kWh).<br/>
 
-    Fuel savings are partially derived from achieving a cleaner oil sump, thereby reducing friction on the crankshaft. It is estimated that this improvement could lead to up to a 0.8% reduction in resistance during operation.
+        Fuel savings are partially derived from achieving a cleaner oil sump, thereby reducing friction on the crankshaft. It is estimated that this improvement could lead to up to a 0.8% reduction in resistance during operation.
 
-    These estimations are based on a series of static tests conducted at a power plant in Barbados, further details of which can be found on our website at <a href="https://marinefluid.dk/cases/barbados/">https://marinefluid.dk/cases/barbados/</a>.
+        These estimations are based on a series of static tests conducted at a power plant in Barbados, further details of which can be found on our website at <a href="https://marinefluid.dk/cases/barbados/">https://marinefluid.dk/cases/barbados/</a>.
 
-    All savings figures are estimates, and Marine Fluid Technology disclaims any responsibility for their factual accuracy. These numbers are intended to estimate potential savings. For further inquiries or details, please do not hesitate to <a href="mailto:contact@marinefluid.dk">contact us</a>, and we will be glad to assist with any information required.
+        All savings figures are estimates, and Marine Fluid Technology disclaims any responsibility for their factual accuracy. These numbers are intended to estimate potential savings. For further inquiries or details, please do not hesitate to <a href="mailto:contact@marinefluid.dk">contact us</a>, and we will be glad to assist with any information required. The density of the fuel oil is estimated to be 928 L/MT, which is a mean value of three different possible vessel fuel oils.
 
         </p>
       </aside>

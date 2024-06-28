@@ -20,7 +20,7 @@ const useFuelSavingsCalculation = () => {
 
         const savings_FO_USD: number = ME_efficiency * FO_USD
 
-        const savings_FO_L: number = (annual_MT_FO-(annual_MT_FO*(1-ME_efficiency)))*1000
+        const savings_FO_L: number = (annual_MT_FO-(annual_MT_FO*(1-ME_efficiency)))*928
 
         const savings_FO_CO2: number = (savings_FO_L/1000)*3.24
 

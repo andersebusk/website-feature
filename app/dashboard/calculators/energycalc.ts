@@ -9,7 +9,7 @@ const useEnergySavingsCalculation = () => {
         const delta_inlet: number = 58
         const c_vaLue: number = 2.0
         const oil_flow: number = system_oil_flow
-        const fuel_oil_needed: number = 0.2
+        const fuel_oil_needed: number = 0.1
 
         const steam_consumption: number = (delta_inlet*c_vaLue*oil_flow)/3600
 
@@ -27,7 +27,7 @@ const useEnergySavingsCalculation = () => {
 
         const total_savings_USD: number = savings_E_USD + savings_possible_P
 
-        const total_savings_L_FO: number = (fuel_consumption_MT + fuel_ton_year)*1000
+        const total_savings_L_FO: number = (fuel_consumption_MT + fuel_ton_year)*928
 
         const total_savings_CO2_ton: number = fuel_consumption_MT * 3.24 + fuel_ton_year * 3.24
 
