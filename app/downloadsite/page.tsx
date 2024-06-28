@@ -212,7 +212,6 @@ const App: React.FC = () => {
       </header>
       <footer className={styles.footer}>
         Congratulations! You are taking the first step towards saving both the planet and money! <br />
-        Keep up the good work! <br />
         Do not hesitate to contact us for a follow up meeting, to discuss the opportunities in greater details.
       </footer>
       <main className={styles.main}>
@@ -256,16 +255,17 @@ const App: React.FC = () => {
           <tbody>
             <tr className={styles.total}>
               <th>
+                
                 Total operational saving: <br />
-                Total CO2 reduction: <br />
-                EU ETS saving: <br />
+                EU ETS saving: <br /> <br />
+                Total CO2 reduction: <br /> <br />             
                 Total lube oil saving: <br />
                 Total fuel oil saving:
               </th>
-              <td>
+              <td style={{ textDecoration: 'underline' }}>
               ${(Math.floor(USD + USD_E + USD_F + USD_P)).toLocaleString('en-US')} <br />
-              {(Math.floor(CO2_Tons + CO2_Tons_E + CO2_Tons_F + CO2_Tons_P)).toLocaleString('en-US')} tCO2e<br />
-              ${(Math.floor((CO2_Tons_F*90)/2)).toLocaleString('en-US')} < br />
+              ${(Math.floor((CO2_Tons_F*90)/2)).toLocaleString('en-US')} < br /> <br />
+              {(Math.floor(CO2_Tons + CO2_Tons_E + CO2_Tons_F + CO2_Tons_P)).toLocaleString('en-US')} tCO2e<br /> <br />             
               {(Math.floor(Liters)).toLocaleString('en-US')} L <br />
               {(Math.floor(Liters_E + Liters_F + Liters_P)).toLocaleString('en-US')} L
               </td>
@@ -279,7 +279,7 @@ const App: React.FC = () => {
                 SEA-Mate system ROI: <br />
                 SEA-Mate system ROI turnkey solution: <br />
               </th>
-              <td>
+              <td style={{ textDecoration: 'underline' }}>
               {(Math.floor((50000/(USD + USD_E + USD_F + USD_P+(CO2_Tons_F*90)/2))*365))} days<br />
               {(Math.floor((90000/(USD + USD_E + USD_F + USD_P+(CO2_Tons_F*90)/2))*365))} days<br />
               </td>
@@ -292,7 +292,7 @@ const App: React.FC = () => {
             <div className={styles.image}>
             <Image
                   src="/blend1.png"
-                  width={130}
+                  width={180}
                   height={500}
                   alt='Screenshots of the dashboard project showing desktop version'
                 />
@@ -301,17 +301,15 @@ const App: React.FC = () => {
           </div>
       <aside className={styles.aside}>
         <hr className={styles.hr} />
-        <b>Elaboration of calculations</b>
+        <b>Elaboration of calculations:</b>
         <p>
-        Centrifuge savings are calculated under the assumption that the filters completely replace the ship&apos;s
-        purifier. This implies potential savings if the purifier is entirely unused, with the filters performing its function.
-        Energy savings specifically relate to replacing the lube oil centrifuge (Purifier) with filters. Assumptions are made to facilitate these calculations, based on parameters that are generally consistent across many vessels. These include the an estimation of the system oil flow and the power consumption of the purifier&apos;s electric motor. Additionally, it is assumed that 0.1 kg of fuel oil is required to generate 1 kWh (i.e., 0.1 kg/kWh).<br/>
-
-        Fuel savings are partially derived from achieving a cleaner oil sump, thereby reducing friction on the crankshaft. It is estimated that this improvement could lead to up to a 0.8% reduction in resistance during operation.
-
-        These estimations are based on a series of static tests conducted at a power plant in Barbados, further details of which can be found on our website at <a href="https://marinefluid.dk/cases/barbados/">https://marinefluid.dk/cases/barbados/</a>.
-
-        All savings figures are estimates, and Marine Fluid Technology disclaims any responsibility for their factual accuracy. These numbers are intended to estimate potential savings. For further inquiries or details, please do not hesitate to <a href="mailto:contact@marinefluid.dk">contact us</a>, and we will be glad to assist with any information required. The density of the fuel oil is estimated to be 928 L/MT, which is a mean value of three different possible vessel fuel oils.
+        <li>Centrifuge savings assume filters replace the ship's purifier, potentially saving fuel if the purifier remains unused.</li>
+    <li>Energy savings come from replacing the lube oil centrifuge with filters, based on typical vessel parameters.</li>
+    <li>Assumptions include system oil flow and purifier motor power consumption (0.1 kg fuel oil = 1 kWh).</li>
+    <li>Fuel savings result from a cleaner oil sump, reducing crankshaft friction and possibly lowering operational resistance by up to 0.8%.</li>
+    <li>Estimations are based on static tests at a Barbados power plant; details: <a href="https://marinefluid.dk/cases/barbados/">Marine Fluid Technology's website</a>.</li>
+    <li>All savings figures are estimates; Marine Fluid Technology disclaims accuracy. Contact <a href="mailto:contact@marinefluid.dk">contact@marinefluid.dk</a> for more information.</li>
+    <li>Fuel oil density estimate: 928 L/MT (mean value of three vessel fuel oils).</li>
 
         </p>
       </aside>
