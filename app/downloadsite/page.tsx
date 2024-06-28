@@ -257,8 +257,10 @@ const App: React.FC = () => {
               <th>
                 
                 Total operational saving: <br />
-                EU ETS saving: <br /> <br />
-                Total CO2 reduction: <br /> <br />             
+                EU ETS saving: <br />
+                --------------------------------- <br />
+                Total CO2 reduction: <br />
+                --------------------------------- <br />           
                 Total lube oil saving: <br />
                 Total fuel oil saving:
               </th>
