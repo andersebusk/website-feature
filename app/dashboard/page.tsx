@@ -65,6 +65,7 @@ export default function SubmissionForm() {
   const onBoardRef = useRef<HTMLInputElement>(null);
   const highBNOilRef = useRef<HTMLInputElement>(null);
   const highBNOilPriceRef = useRef<HTMLInputElement>(null);
+  let purifierElectric: string = "2";
   let systemOilFlow: string = "0";
   const router = useRouter();
 
@@ -102,11 +103,11 @@ export default function SubmissionForm() {
   const power = ME_powerRef.current ? parseFloat(ME_powerRef.current.value) : 0;
   
   if (power <= 10000) {
-    systemOilFlow = "2000";
+    systemOilFlow = "2000"; purifierElectric = "2";
   } else if (power <= 20000) {
-    systemOilFlow = "4000";
+    systemOilFlow = "4000"; purifierElectric = "4";
   } else {
-    systemOilFlow = "6000";
+    systemOilFlow = "6000"; purifierElectric = "6";
   }
     if (
       vesselNameRef.current &&
@@ -122,7 +123,8 @@ export default function SubmissionForm() {
       onBoardRef.current &&
       highBNOilRef.current &&
       highBNOilPriceRef.current &&
-      systemOilFlow
+      systemOilFlow &&
+      purifierElectric
     ) {
       const formData = {
         vessel_name: vesselNameRef.current.value,
@@ -139,7 +141,8 @@ export default function SubmissionForm() {
         onboard_bn: onBoardRef.current.value,
         highBN: highBNOilRef.current.value,
         highBNPrice: highBNOilPriceRef.current.value,
-        systemOilFlow: systemOilFlow
+        systemOilFlow: systemOilFlow,
+        purifierElectric: purifierElectric
       };
       console.log('Form data to be saved:', formData);
       sessionStorage.setItem('formData', JSON.stringify(formData));
@@ -169,7 +172,8 @@ export default function SubmissionForm() {
           if (onBoardRef.current) onBoardRef.current.value = savedFormData.onboard_bn;
           if (highBNOilRef.current) highBNOilRef.current.value = savedFormData.highBN;
           if (highBNOilPriceRef.current) highBNOilPriceRef.current.value = savedFormData.highBNPrice;
-          if (systemOilFlow) systemOilFlow = savedFormData.system_oil_flow; }
+          if (systemOilFlow) systemOilFlow = savedFormData.system_oil_flow;
+          if (purifierElectric) purifierElectric = savedFormData.purifier_electric;}
       } catch (error) {
         console.error('Error parsing form data from session storage', error);
       }

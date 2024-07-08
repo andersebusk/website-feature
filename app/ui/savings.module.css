@@ -224,7 +224,7 @@
   .aside{
     -prince-float: bottom;
     float: none;
-    padding:0 0.5cm .5cm 0.5cm;
+    padding:0cm 0.5cm .5cm 0.5cm;
     margin-top: -30px;
   }
   
@@ -248,7 +248,7 @@
     align-items:center;
     text-align: center;
     height:2.3cm;
-    padding:0 1cm;
+    padding:0 1.1cm;
     color : var(--footer-color);
     background-color:var(--highlight-color);
     font-size:12pt;

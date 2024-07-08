@@ -76,7 +76,8 @@ const Page = () => {
         energy_besparelser(
             savedFormData.annual_days_sailing, 
             savedFormDataAdd.fuel_price,
-            savedFormData.systemOilFlow
+            savedFormData.systemOilFlow,
+            savedFormData.purifierElectric
         );
 
         fuel_besparelser(
