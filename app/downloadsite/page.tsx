@@ -191,7 +191,7 @@ const App: React.FC = () => {
           </div>
         </header>
         <footer className={styles.footer}>
-          Congratulations! You are taking the first step towards a helthier planet and economy! <br />
+          Congratulations! You are taking the first step towards a healthier planet and economy! <br />
           Do not hesitate to contact us for a follow up meeting, to discuss the opportunities in greater details.
         </footer>
         <main className={styles.main}>
